@@ -4,7 +4,7 @@ namespace ProyectoSuministroController {
 	using namespace System::Collections::Generic;
 	using namespace ProyectoSuministroModel;
 	using namespace System;
-	//ZHAID LE GUSTA LA GAMPI
+
 	public ref class UsuarioController {
 	public:
 		UsuarioController();
