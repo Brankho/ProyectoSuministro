@@ -4,7 +4,7 @@ using namespace ProyectoSuministroController;
 using namespace System::IO; //Trabaja con archivos de texto
 
 ResidencialController::ResidencialController() {
-
+	//Prueba de residencial controller
 }
 
 List<Residencial^>^ ProyectoSuministroController::ResidencialController::buscarResidencialxConstructora(String^ constructoraResidencial)
