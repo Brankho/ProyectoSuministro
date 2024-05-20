@@ -1,0 +1,4 @@
+Potable;Buena;Reparacion de Fugas;invierno
+Dulce;Regular;Corte de Emergencia;otoño
+Salada;Mala;Atencion al cliente;primavera
+Destilada;Excelente;Inspeccion y Mantenimiento;verano

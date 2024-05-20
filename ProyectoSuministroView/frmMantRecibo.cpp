@@ -1,0 +1,2 @@
+#include "frmMantRecibo.h"
+
