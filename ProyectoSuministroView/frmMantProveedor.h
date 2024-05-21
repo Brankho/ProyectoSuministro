@@ -9,6 +9,9 @@ namespace ProyectoSuministroView {
 	using namespace System::Windows::Forms;
 	using namespace System::Data;
 	using namespace System::Drawing;
+	using namespace ProyectoSuministroController;
+	using namespace System::Collections::Generic;
+	using namespace ProyectoSuministroModel;
 
 	/// <summary>
 	/// Resumen de frmMantProveedor
@@ -40,15 +43,20 @@ namespace ProyectoSuministroView {
 	private: System::Windows::Forms::Button^ button3;
 	private: System::Windows::Forms::Button^ button2;
 	private: System::Windows::Forms::DataGridView^ dataGridView1;
+
+
+
+
+
+	private: System::Windows::Forms::GroupBox^ groupBox1;
+	private: System::Windows::Forms::TextBox^ textBox1;
+	private: System::Windows::Forms::Button^ button1;
+	private: System::Windows::Forms::Label^ label1;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ column4;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column1;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column2;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column3;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column5;
-	private: System::Windows::Forms::GroupBox^ groupBox1;
-	private: System::Windows::Forms::TextBox^ textBox1;
-	private: System::Windows::Forms::Button^ button1;
-	private: System::Windows::Forms::Label^ label1;
 
 	private:
 		/// <summary>
@@ -67,15 +75,15 @@ namespace ProyectoSuministroView {
 			this->button3 = (gcnew System::Windows::Forms::Button());
 			this->button2 = (gcnew System::Windows::Forms::Button());
 			this->dataGridView1 = (gcnew System::Windows::Forms::DataGridView());
+			this->groupBox1 = (gcnew System::Windows::Forms::GroupBox());
+			this->textBox1 = (gcnew System::Windows::Forms::TextBox());
+			this->button1 = (gcnew System::Windows::Forms::Button());
+			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->column4 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->Column1 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->Column2 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->Column3 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->Column5 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->groupBox1 = (gcnew System::Windows::Forms::GroupBox());
-			this->textBox1 = (gcnew System::Windows::Forms::TextBox());
-			this->button1 = (gcnew System::Windows::Forms::Button());
-			this->label1 = (gcnew System::Windows::Forms::Label());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->BeginInit();
 			this->groupBox1->SuspendLayout();
 			this->SuspendLayout();
@@ -122,41 +130,6 @@ namespace ProyectoSuministroView {
 			this->dataGridView1->Size = System::Drawing::Size(1010, 264);
 			this->dataGridView1->TabIndex = 11;
 			// 
-			// column4
-			// 
-			this->column4->HeaderText = L"Código";
-			this->column4->MinimumWidth = 6;
-			this->column4->Name = L"column4";
-			this->column4->Width = 125;
-			// 
-			// Column1
-			// 
-			this->Column1->HeaderText = L"Razón Social";
-			this->Column1->MinimumWidth = 6;
-			this->Column1->Name = L"Column1";
-			this->Column1->Width = 125;
-			// 
-			// Column2
-			// 
-			this->Column2->HeaderText = L"RUC";
-			this->Column2->MinimumWidth = 6;
-			this->Column2->Name = L"Column2";
-			this->Column2->Width = 125;
-			// 
-			// Column3
-			// 
-			this->Column3->HeaderText = L"Tipo";
-			this->Column3->MinimumWidth = 6;
-			this->Column3->Name = L"Column3";
-			this->Column3->Width = 125;
-			// 
-			// Column5
-			// 
-			this->Column5->HeaderText = L"Calidad";
-			this->Column5->MinimumWidth = 6;
-			this->Column5->Name = L"Column5";
-			this->Column5->Width = 125;
-			// 
 			// groupBox1
 			// 
 			this->groupBox1->Controls->Add(this->textBox1);
@@ -184,6 +157,7 @@ namespace ProyectoSuministroView {
 			this->button1->TabIndex = 2;
 			this->button1->Text = L"Buscar";
 			this->button1->UseVisualStyleBackColor = true;
+			this->button1->Click += gcnew System::EventHandler(this, &frmMantProveedor::button1_Click);
 			// 
 			// label1
 			// 
@@ -193,6 +167,41 @@ namespace ProyectoSuministroView {
 			this->label1->Size = System::Drawing::Size(36, 16);
 			this->label1->TabIndex = 0;
 			this->label1->Text = L"RUC";
+			// 
+			// column4
+			// 
+			this->column4->HeaderText = L"Código";
+			this->column4->MinimumWidth = 6;
+			this->column4->Name = L"column4";
+			this->column4->Width = 125;
+			// 
+			// Column1
+			// 
+			this->Column1->HeaderText = L"Razón Social";
+			this->Column1->MinimumWidth = 6;
+			this->Column1->Name = L"Column1";
+			this->Column1->Width = 125;
+			// 
+			// Column2
+			// 
+			this->Column2->HeaderText = L"RUC";
+			this->Column2->MinimumWidth = 6;
+			this->Column2->Name = L"Column2";
+			this->Column2->Width = 125;
+			// 
+			// Column3
+			// 
+			this->Column3->HeaderText = L"Calidad Agua";
+			this->Column3->MinimumWidth = 6;
+			this->Column3->Name = L"Column3";
+			this->Column3->Width = 125;
+			// 
+			// Column5
+			// 
+			this->Column5->HeaderText = L"Infraestructura";
+			this->Column5->MinimumWidth = 6;
+			this->Column5->Name = L"Column5";
+			this->Column5->Width = 125;
 			// 
 			// frmMantProveedor
 			// 
@@ -217,5 +226,25 @@ namespace ProyectoSuministroView {
 		frmNuevoProveedor^ ventanaNuevaProveedor = gcnew frmNuevoProveedor();
 		ventanaNuevaProveedor->ShowDialog();
 	}
+    private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
+	    String^ RUCProveedor = this->textBox1->Text;
+	    RUCProveedor;
+	    ProveedorController^ objProveedorController = gcnew ProveedorController();
+	    List<Proveedor^>^ listaProveedores = objProveedorController->buscarProveedorxRUC(RUCProveedor);
+	    mostrarGrilla(listaProveedores);
+    }
+		private:void mostrarGrilla(List<Proveedor^>^ listaProveedores) {
+			this->dataGridView1->Rows->Clear();
+			for (int i = 0; i < listaProveedores->Count; i++) {
+				Proveedor^ objProveedor = listaProveedores[i];
+				array<String^>^ filaGrilla = gcnew array<String^>(5);
+				filaGrilla[0] = Convert::ToString(objProveedor->getcodigo()); //Devuelve enteros
+				filaGrilla[1] = objProveedor->getrazonSocial();
+				filaGrilla[2] = objProveedor->getruc();
+				filaGrilla[3] = objProveedor->getcalidadagua(); 
+				filaGrilla[4] = objProveedor->getcalidadinfraestructura();
+				this->dataGridView1->Rows->Add(filaGrilla);
+			}
+		}
 };
 }

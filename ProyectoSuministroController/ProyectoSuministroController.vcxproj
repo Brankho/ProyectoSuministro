@@ -116,10 +116,12 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="ProveedorController.h" />
     <ClInclude Include="ResidencialController.h" />
     <ClInclude Include="UsuarioController.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="ProveedorController.cpp" />
     <ClCompile Include="ResidencialController.cpp" />
     <ClCompile Include="UsuarioController.cpp" />
   </ItemGroup>

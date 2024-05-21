@@ -213,6 +213,7 @@ namespace ProyectoSuministroView {
 			this->Controls->Add(this->groupBox1);
 			this->Name = L"frmMantResidencial";
 			this->Text = L"Mantenimiento Residencial";
+			this->Load += gcnew System::EventHandler(this, &frmMantResidencial::frmMantResidencial_Load);
 			this->groupBox1->ResumeLayout(false);
 			this->groupBox1->PerformLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->EndInit();
@@ -251,6 +252,8 @@ namespace ProyectoSuministroView {
 private: System::Void button2_Click_1(System::Object^ sender, System::EventArgs^ e) {
 	frmNuevaResidencial^ ventanaNuevaResidencial = gcnew frmNuevaResidencial();
 	ventanaNuevaResidencial->ShowDialog(); //Ventana como modal
+}
+private: System::Void frmMantResidencial_Load(System::Object^ sender, System::EventArgs^ e) {
 }
 };
 }
