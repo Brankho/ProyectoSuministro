@@ -108,6 +108,7 @@ namespace ProyectoSuministroView {
 			this->button2->TabIndex = 11;
 			this->button2->Text = L"Cancelar";
 			this->button2->UseVisualStyleBackColor = true;
+			this->button2->Click += gcnew System::EventHandler(this, &frmNuevaResidencial::button2_Click);
 			// 
 			// button1
 			// 
@@ -229,5 +230,8 @@ namespace ProyectoSuministroView {
 		MessageBox::Show("La residencial ha sido agregada con éxito");
 		this->Close();
 	}
+private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e) {
+	this->Close();
+}
 };
 }

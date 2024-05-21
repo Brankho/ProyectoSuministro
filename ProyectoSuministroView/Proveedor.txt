@@ -1,1 +1,2 @@
-1;ConstruMAS;12345678912;Buena;7647368;construMAS@gmail.com;Excelente;Si;Verano
+1;ConstruMAS;12345678912;Buena;7647368;construMAS@gmail.com;Excelente;Verano
+23;TeleCASA;34859485;Buena;234674;teleHOUSE@administracionTH.com;Excelente;
