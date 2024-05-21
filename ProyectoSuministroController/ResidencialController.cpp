@@ -93,6 +93,17 @@ void ProyectoSuministroController::ResidencialController::agregarNuevaResidencia
 	escribirArchivo(listaResidenciales);
 }
 
+void ProyectoSuministroController::ResidencialController::eliminarResidencial(String^ constructora) {
+	List<Residencial^>^ listaResidenciales = buscarResidencialesAll();
+	for (int i = 0; i < listaResidenciales->Count; i++) {
+		if (listaResidenciales[i]->getconstructora() == constructora) {
+			listaResidenciales->RemoveAt(i);
+			break;
+		}
+	}
+	escribirArchivo(listaResidenciales);
+}
+
 void ProyectoSuministroController::ResidencialController::escribirArchivo(List<Residencial^>^ listaResidenciales) {
 	array<String^>^ lineasArchivo = gcnew array<String^>(listaResidenciales->Count);
 	for (int j = 0; j < listaResidenciales->Count; j++) {
@@ -101,6 +112,59 @@ void ProyectoSuministroController::ResidencialController::escribirArchivo(List<R
 	}
 	File::WriteAllLines("Residencial.txt", lineasArchivo);
 }
+
+Residencial^ProyectoSuministroController::ResidencialController::buscarResidencialxCons(String^ constructoraRES)
+{
+	//throw gcnew System::NotImplementedException();
+	// TODO: Insertar una instrucción "return" aquí
+	Residencial^ objResidencial;
+	array<String^>^ lineas = File::ReadAllLines("Residencial.txt");
+	String^ separadores = ";";
+
+	//Elemento por elemento de 1 arreglo
+	for each (String ^ lineaResidencial in lineas) {
+
+		array<String^>^ datos = lineaResidencial->Split(separadores->ToCharArray());
+		// int codigo = Convert::ToInt32(datos[0]), de String a int
+		String^ sectorUrbano = datos[0];
+		String^ constructora = datos[1];
+		int cantBloques = Convert::ToInt32(datos[2]);
+		int cantDepartamentos = Convert::ToInt32(datos[3]);
+		int cantTanques = Convert::ToInt32(datos[4]);
+		int codigo;
+		String^ ruc;
+		String^ direccion;
+		String^ telefono;
+		String^ razonSocial;
+		String^ ciudad;
+		String^ distrito;
+		String^ correo;
+		int codigoBloque;
+		int codigoDepa;
+
+		if (constructora->CompareTo(constructoraRES) == 0) { //Para comparar datos a mostrar
+			objResidencial = gcnew Residencial(codigo, ruc, direccion, telefono, razonSocial, ciudad, distrito, correo, sectorUrbano, constructora, cantBloques, cantDepartamentos, codigoBloque, codigoDepa, cantTanques);
+			break;
+		}
+	}
+	return objResidencial;
+}
+
+void ResidencialController::actualizarResidencial(String^ sectorUrbano, String^constructora, int cantBloques, int cantDepartamentos, int cantTanques) {
+	List<Residencial^>^ listaResidenciales = buscarResidencialesAll();
+	for (int i = 0; i < listaResidenciales->Count; i++) {
+		if (listaResidenciales[i]->getconstructora() == constructora) {
+			listaResidenciales[i]->setsectorUrbano(sectorUrbano);
+			listaResidenciales[i]->setconstructora(constructora);
+			listaResidenciales[i]->setcantBloques(cantBloques);
+			listaResidenciales[i]->setcantDepartamentos(cantDepartamentos);
+			listaResidenciales[i]->setcantTanques(cantTanques);
+			break;
+		}
+	}
+	escribirArchivo(listaResidenciales);
+}
+
 
 
 	

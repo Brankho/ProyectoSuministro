@@ -176,6 +176,7 @@ namespace ProyectoSuministroView {
 			this->button2->TabIndex = 11;
 			this->button2->Text = L"Cancelar";
 			this->button2->UseVisualStyleBackColor = true;
+			this->button2->Click += gcnew System::EventHandler(this, &frmNuevoUsuario::button2_Click);
 			// 
 			// button1
 			// 
@@ -301,6 +302,9 @@ private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e
 	UsuarioController^ objUsuarioController = gcnew UsuarioController();
 	objUsuarioController->agregarNuevoUsuario(codigo, celular, titular, DNI, direccion, distrito, tarifa, correo);
 	MessageBox::Show("El usuario ha sido agregado con éxito al sistema");
+	this->Close();
+}
+private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e) {
 	this->Close();
 }
 };

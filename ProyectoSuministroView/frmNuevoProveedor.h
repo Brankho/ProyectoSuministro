@@ -8,6 +8,9 @@ namespace ProyectoSuministroView {
 	using namespace System::Windows::Forms;
 	using namespace System::Data;
 	using namespace System::Drawing;
+	using namespace ProyectoSuministroController;
+	using namespace ProyectoSuministroModel;
+	using namespace System::Collections::Generic;
 
 	/// <summary>
 	/// Resumen de frmNuevoProveedor
@@ -128,6 +131,7 @@ namespace ProyectoSuministroView {
 			// comboBox5
 			// 
 			this->comboBox5->FormattingEnabled = true;
+			this->comboBox5->Items->AddRange(gcnew cli::array< System::Object^  >(2) { L"Verano", L"Invierno" });
 			this->comboBox5->Location = System::Drawing::Point(295, 369);
 			this->comboBox5->Name = L"comboBox5";
 			this->comboBox5->Size = System::Drawing::Size(121, 24);
@@ -136,6 +140,7 @@ namespace ProyectoSuministroView {
 			// comboBox4
 			// 
 			this->comboBox4->FormattingEnabled = true;
+			this->comboBox4->Items->AddRange(gcnew cli::array< System::Object^  >(2) { L"SI", L"NO" });
 			this->comboBox4->Location = System::Drawing::Point(295, 324);
 			this->comboBox4->Name = L"comboBox4";
 			this->comboBox4->Size = System::Drawing::Size(121, 24);
@@ -171,14 +176,15 @@ namespace ProyectoSuministroView {
 			this->label7->AutoSize = true;
 			this->label7->Location = System::Drawing::Point(89, 285);
 			this->label7->Name = L"label7";
-			this->label7->Size = System::Drawing::Size(57, 16);
+			this->label7->Size = System::Drawing::Size(143, 16);
 			this->label7->TabIndex = 20;
-			this->label7->Text = L"Calidad:";
+			this->label7->Text = L"Calidad Infraestructura:";
 			this->label7->Click += gcnew System::EventHandler(this, &frmNuevoProveedor::label7_Click);
 			// 
 			// comboBox2
 			// 
 			this->comboBox2->FormattingEnabled = true;
+			this->comboBox2->Items->AddRange(gcnew cli::array< System::Object^  >(3) { L"Buena", L"Excelente", L"Premium" });
 			this->comboBox2->Location = System::Drawing::Point(295, 277);
 			this->comboBox2->Name = L"comboBox2";
 			this->comboBox2->Size = System::Drawing::Size(121, 24);
@@ -187,6 +193,7 @@ namespace ProyectoSuministroView {
 			// comboBox1
 			// 
 			this->comboBox1->FormattingEnabled = true;
+			this->comboBox1->Items->AddRange(gcnew cli::array< System::Object^  >(3) { L"Buena", L"Excelente", L"Premium" });
 			this->comboBox1->Location = System::Drawing::Point(295, 160);
 			this->comboBox1->Name = L"comboBox1";
 			this->comboBox1->Size = System::Drawing::Size(121, 24);
@@ -216,6 +223,7 @@ namespace ProyectoSuministroView {
 			this->button2->TabIndex = 11;
 			this->button2->Text = L"Cancelar";
 			this->button2->UseVisualStyleBackColor = true;
+			this->button2->Click += gcnew System::EventHandler(this, &frmNuevoProveedor::button2_Click);
 			// 
 			// button1
 			// 
@@ -225,6 +233,7 @@ namespace ProyectoSuministroView {
 			this->button1->TabIndex = 10;
 			this->button1->Text = L"Grabar";
 			this->button1->UseVisualStyleBackColor = true;
+			this->button1->Click += gcnew System::EventHandler(this, &frmNuevoProveedor::button1_Click);
 			// 
 			// textBox3
 			// 
@@ -261,9 +270,9 @@ namespace ProyectoSuministroView {
 			this->label4->AutoSize = true;
 			this->label4->Location = System::Drawing::Point(89, 163);
 			this->label4->Name = L"label4";
-			this->label4->Size = System::Drawing::Size(38, 16);
+			this->label4->Size = System::Drawing::Size(122, 16);
 			this->label4->TabIndex = 3;
-			this->label4->Text = L"Tipo:";
+			this->label4->Text = L"Calidad Suministro:";
 			// 
 			// label3
 			// 
@@ -308,5 +317,25 @@ namespace ProyectoSuministroView {
 #pragma endregion
 	private: System::Void label7_Click(System::Object^ sender, System::EventArgs^ e) {
 	}
+private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
+	int codigo = Convert::ToInt32(this->textBox1->Text);
+	String^razonSocial = this->textBox2->Text;
+	String^ ruc = this->textBox3->Text;
+	String^ calidadAgua = this->comboBox1->Text;
+	String^telefono = this->textBox7->Text;
+	String^ correo = this->textBox4->Text;
+	String^ calidadInfraestructura = this->comboBox2->Text;
+	String^ servicioEmergencia = this->comboBox4->Text;
+	String^ estacion = this->comboBox5->Text;
+	void agregarNuevoProveedor(int codigo, String ^ razonSocial, String ^ ruc, String ^ calidadAgua, String ^ telefono, String ^ correo, String ^ calidadInfraestructura, String ^ servicioEmergencia, String^estacion);
+	//MODIFICAR DE AQUÍ
+	ProveedorController^ objProveedorController = gcnew ProveedorController();
+	objProveedorController->agregarNuevoProveedor(codigo, razonSocial,  ruc, calidadAgua, telefono, correo,  calidadInfraestructura, servicioEmergencia,estacion);
+	MessageBox::Show("El proveedor ha sido agregado con éxito al sistema");
+	this->Close();
+}
+private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e) {
+	this->Close();
+}
 };
 }

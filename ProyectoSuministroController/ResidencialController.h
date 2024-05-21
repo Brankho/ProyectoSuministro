@@ -12,5 +12,8 @@ namespace ProyectoSuministroController {
 		List<Residencial^>^ buscarResidencialesAll();
 		void agregarNuevaResidencial(String^ sectorUrbano, String^ constructora, int cantBloques, int cantDepartamentos, int cantTanques);
 		void escribirArchivo(List<Residencial^>^ listaResidenciales);
+		Residencial^ buscarResidencialxCons(String^ constructoraRES);
+		void actualizarResidencial(String^ sectorUrbano, String^ constructora, int cantBloques, int cantDepartamentos, int cantTanques);
+		void eliminarResidencial(String^ constructora);
 	};
 }

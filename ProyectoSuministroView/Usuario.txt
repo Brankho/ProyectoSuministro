@@ -4,3 +4,4 @@
 4;956784564;Manuel;71456734;AvArequipa;JesusMaria;Domestica;Manuel123
 7;920484310;Bran;73972890;Nogales;Comas;Domestica;branpv12
 29;920484356;Jose;78945678;Universitaria;SanMiguel;Empresarial;puke
+54;920484352;Carlitos Vela;76981212;Javier Prado Este 2013;Miraflores;Domestica;carlitosNA@gmail.com

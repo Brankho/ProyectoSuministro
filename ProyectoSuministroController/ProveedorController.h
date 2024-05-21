@@ -9,5 +9,8 @@ namespace ProyectoSuministroController {
 	public:
 		ProveedorController();
 		List<Proveedor^>^ buscarProveedorxRUC(String^ RUCResidencial);
+		List<Proveedor^>^ buscarProveedoresAll();
+		void agregarNuevoProveedor(int codigo, String^ razonSocial, String^ ruc, String^ calidadAgua, String^ telefono, String^ correo, String^ calidadInfraestructura, String^ servicioEmergencia, String^ estacion);
+		void escribirArchivo(List<Proveedor^>^ listaProveedores);
 	};
 }
