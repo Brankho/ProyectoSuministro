@@ -1,4 +1,1 @@
-Potable;Buena;Reparacion de Fugas;invierno
-Dulce;Regular;Corte de Emergencia;otoño
-Salada;Mala;Atencion al cliente;primavera
-Destilada;Excelente;Inspeccion y Mantenimiento;verano
+1;ConstruMAS;12345678912;Agua;7647368;construMAS@gmail.com;Excelente;Si;Verano

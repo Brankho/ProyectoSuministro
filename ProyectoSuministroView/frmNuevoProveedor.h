@@ -53,11 +53,11 @@ namespace ProyectoSuministroView {
 	private: System::Windows::Forms::Label^ label7;
 	private: System::Windows::Forms::ComboBox^ comboBox5;
 	private: System::Windows::Forms::ComboBox^ comboBox4;
-	private: System::Windows::Forms::ComboBox^ comboBox3;
+
 	private: System::Windows::Forms::TextBox^ textBox4;
 	private: System::Windows::Forms::Label^ label10;
 	private: System::Windows::Forms::Label^ label9;
-	private: System::Windows::Forms::Label^ label8;
+
 
 	private:
 		/// <summary>
@@ -73,6 +73,12 @@ namespace ProyectoSuministroView {
 		void InitializeComponent(void)
 		{
 			this->groupBox1 = (gcnew System::Windows::Forms::GroupBox());
+			this->comboBox5 = (gcnew System::Windows::Forms::ComboBox());
+			this->comboBox4 = (gcnew System::Windows::Forms::ComboBox());
+			this->textBox4 = (gcnew System::Windows::Forms::TextBox());
+			this->label10 = (gcnew System::Windows::Forms::Label());
+			this->label9 = (gcnew System::Windows::Forms::Label());
+			this->label7 = (gcnew System::Windows::Forms::Label());
 			this->comboBox2 = (gcnew System::Windows::Forms::ComboBox());
 			this->comboBox1 = (gcnew System::Windows::Forms::ComboBox());
 			this->textBox7 = (gcnew System::Windows::Forms::TextBox());
@@ -87,14 +93,6 @@ namespace ProyectoSuministroView {
 			this->label3 = (gcnew System::Windows::Forms::Label());
 			this->label2 = (gcnew System::Windows::Forms::Label());
 			this->label1 = (gcnew System::Windows::Forms::Label());
-			this->label7 = (gcnew System::Windows::Forms::Label());
-			this->label8 = (gcnew System::Windows::Forms::Label());
-			this->label9 = (gcnew System::Windows::Forms::Label());
-			this->label10 = (gcnew System::Windows::Forms::Label());
-			this->textBox4 = (gcnew System::Windows::Forms::TextBox());
-			this->comboBox3 = (gcnew System::Windows::Forms::ComboBox());
-			this->comboBox4 = (gcnew System::Windows::Forms::ComboBox());
-			this->comboBox5 = (gcnew System::Windows::Forms::ComboBox());
 			this->groupBox1->SuspendLayout();
 			this->SuspendLayout();
 			// 
@@ -102,11 +100,9 @@ namespace ProyectoSuministroView {
 			// 
 			this->groupBox1->Controls->Add(this->comboBox5);
 			this->groupBox1->Controls->Add(this->comboBox4);
-			this->groupBox1->Controls->Add(this->comboBox3);
 			this->groupBox1->Controls->Add(this->textBox4);
 			this->groupBox1->Controls->Add(this->label10);
 			this->groupBox1->Controls->Add(this->label9);
-			this->groupBox1->Controls->Add(this->label8);
 			this->groupBox1->Controls->Add(this->label7);
 			this->groupBox1->Controls->Add(this->comboBox2);
 			this->groupBox1->Controls->Add(this->comboBox1);
@@ -128,6 +124,57 @@ namespace ProyectoSuministroView {
 			this->groupBox1->TabIndex = 4;
 			this->groupBox1->TabStop = false;
 			this->groupBox1->Text = L"Detalles Proveedor";
+			// 
+			// comboBox5
+			// 
+			this->comboBox5->FormattingEnabled = true;
+			this->comboBox5->Location = System::Drawing::Point(295, 369);
+			this->comboBox5->Name = L"comboBox5";
+			this->comboBox5->Size = System::Drawing::Size(121, 24);
+			this->comboBox5->TabIndex = 27;
+			// 
+			// comboBox4
+			// 
+			this->comboBox4->FormattingEnabled = true;
+			this->comboBox4->Location = System::Drawing::Point(295, 324);
+			this->comboBox4->Name = L"comboBox4";
+			this->comboBox4->Size = System::Drawing::Size(121, 24);
+			this->comboBox4->TabIndex = 26;
+			// 
+			// textBox4
+			// 
+			this->textBox4->Location = System::Drawing::Point(295, 240);
+			this->textBox4->Name = L"textBox4";
+			this->textBox4->Size = System::Drawing::Size(121, 22);
+			this->textBox4->TabIndex = 24;
+			// 
+			// label10
+			// 
+			this->label10->AutoSize = true;
+			this->label10->Location = System::Drawing::Point(89, 372);
+			this->label10->Name = L"label10";
+			this->label10->Size = System::Drawing::Size(62, 16);
+			this->label10->TabIndex = 23;
+			this->label10->Text = L"Estación:";
+			// 
+			// label9
+			// 
+			this->label9->AutoSize = true;
+			this->label9->Location = System::Drawing::Point(89, 327);
+			this->label9->Name = L"label9";
+			this->label9->Size = System::Drawing::Size(135, 16);
+			this->label9->TabIndex = 22;
+			this->label9->Text = L"Servicio Emergencia:";
+			// 
+			// label7
+			// 
+			this->label7->AutoSize = true;
+			this->label7->Location = System::Drawing::Point(89, 285);
+			this->label7->Name = L"label7";
+			this->label7->Size = System::Drawing::Size(57, 16);
+			this->label7->TabIndex = 20;
+			this->label7->Text = L"Calidad:";
+			this->label7->Click += gcnew System::EventHandler(this, &frmNuevoProveedor::label7_Click);
 			// 
 			// comboBox2
 			// 
@@ -244,74 +291,6 @@ namespace ProyectoSuministroView {
 			this->label1->Size = System::Drawing::Size(54, 16);
 			this->label1->TabIndex = 0;
 			this->label1->Text = L"Código:";
-			// 
-			// label7
-			// 
-			this->label7->AutoSize = true;
-			this->label7->Location = System::Drawing::Point(89, 285);
-			this->label7->Name = L"label7";
-			this->label7->Size = System::Drawing::Size(57, 16);
-			this->label7->TabIndex = 20;
-			this->label7->Text = L"Calidad:";
-			this->label7->Click += gcnew System::EventHandler(this, &frmNuevoProveedor::label7_Click);
-			// 
-			// label8
-			// 
-			this->label8->AutoSize = true;
-			this->label8->Location = System::Drawing::Point(89, 323);
-			this->label8->Name = L"label8";
-			this->label8->Size = System::Drawing::Size(38, 16);
-			this->label8->TabIndex = 21;
-			this->label8->Text = L"Tipo:";
-			// 
-			// label9
-			// 
-			this->label9->AutoSize = true;
-			this->label9->Location = System::Drawing::Point(89, 360);
-			this->label9->Name = L"label9";
-			this->label9->Size = System::Drawing::Size(135, 16);
-			this->label9->TabIndex = 22;
-			this->label9->Text = L"Servicio Emergencia:";
-			// 
-			// label10
-			// 
-			this->label10->AutoSize = true;
-			this->label10->Location = System::Drawing::Point(89, 397);
-			this->label10->Name = L"label10";
-			this->label10->Size = System::Drawing::Size(62, 16);
-			this->label10->TabIndex = 23;
-			this->label10->Text = L"Estación:";
-			// 
-			// textBox4
-			// 
-			this->textBox4->Location = System::Drawing::Point(295, 240);
-			this->textBox4->Name = L"textBox4";
-			this->textBox4->Size = System::Drawing::Size(121, 22);
-			this->textBox4->TabIndex = 24;
-			// 
-			// comboBox3
-			// 
-			this->comboBox3->FormattingEnabled = true;
-			this->comboBox3->Location = System::Drawing::Point(295, 320);
-			this->comboBox3->Name = L"comboBox3";
-			this->comboBox3->Size = System::Drawing::Size(121, 24);
-			this->comboBox3->TabIndex = 25;
-			// 
-			// comboBox4
-			// 
-			this->comboBox4->FormattingEnabled = true;
-			this->comboBox4->Location = System::Drawing::Point(295, 357);
-			this->comboBox4->Name = L"comboBox4";
-			this->comboBox4->Size = System::Drawing::Size(121, 24);
-			this->comboBox4->TabIndex = 26;
-			// 
-			// comboBox5
-			// 
-			this->comboBox5->FormattingEnabled = true;
-			this->comboBox5->Location = System::Drawing::Point(295, 394);
-			this->comboBox5->Name = L"comboBox5";
-			this->comboBox5->Size = System::Drawing::Size(121, 24);
-			this->comboBox5->TabIndex = 27;
 			// 
 			// frmNuevoProveedor
 			// 
