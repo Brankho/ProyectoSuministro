@@ -8,6 +8,8 @@ namespace ProyectoSuministroView {
 	using namespace System::Windows::Forms;
 	using namespace System::Data;
 	using namespace System::Drawing;
+	using namespace ProyectoSuministroController;
+	using namespace ProyectoSuministroModel;
 
 	/// <summary>
 	/// Resumen de frmEditarResidencial
@@ -21,6 +23,11 @@ namespace ProyectoSuministroView {
 			//
 			//TODO: agregar código de constructor aquí
 			//
+		}
+		frmEditarResidencial(Residencial^ objResidencial)
+		{
+			InitializeComponent();
+			this->objResidencial = objResidencial;
 		}
 
 	protected:
@@ -48,6 +55,7 @@ namespace ProyectoSuministroView {
 	private: System::Windows::Forms::Label^ label3;
 	private: System::Windows::Forms::Label^ label2;
 	private: System::Windows::Forms::Label^ label1;
+	private: Residencial^ objResidencial;
 
 	private:
 		/// <summary>
@@ -107,6 +115,7 @@ namespace ProyectoSuministroView {
 			this->button2->TabIndex = 11;
 			this->button2->Text = L"Cancelar";
 			this->button2->UseVisualStyleBackColor = true;
+			this->button2->Click += gcnew System::EventHandler(this, &frmEditarResidencial::button2_Click);
 			// 
 			// button1
 			// 
@@ -116,6 +125,7 @@ namespace ProyectoSuministroView {
 			this->button1->TabIndex = 10;
 			this->button1->Text = L"Grabar";
 			this->button1->UseVisualStyleBackColor = true;
+			this->button1->Click += gcnew System::EventHandler(this, &frmEditarResidencial::button1_Click);
 			// 
 			// textBox3
 			// 
@@ -134,6 +144,7 @@ namespace ProyectoSuministroView {
 			// comboBox2
 			// 
 			this->comboBox2->FormattingEnabled = true;
+			this->comboBox2->Items->AddRange(gcnew cli::array< System::Object^  >(3) { L"DIAMANTE", L"VIVALEGRE", L"CASAMAS" });
 			this->comboBox2->Location = System::Drawing::Point(274, 117);
 			this->comboBox2->Name = L"comboBox2";
 			this->comboBox2->Size = System::Drawing::Size(121, 24);
@@ -142,6 +153,7 @@ namespace ProyectoSuministroView {
 			// comboBox1
 			// 
 			this->comboBox1->FormattingEnabled = true;
+			this->comboBox1->Items->AddRange(gcnew cli::array< System::Object^  >(5) { L"Micaela", L"Belaunde", L"Jamaica", L"Pro", L"Metro" });
 			this->comboBox1->Location = System::Drawing::Point(274, 67);
 			this->comboBox1->Name = L"comboBox1";
 			this->comboBox1->Size = System::Drawing::Size(121, 24);
@@ -213,5 +225,27 @@ namespace ProyectoSuministroView {
 
 		}
 #pragma endregion
-	};
+	private: System::Void frmEditarResidencial_Load(System::Object^ sender, System::EventArgs^ e) {
+		this->comboBox1->Text = this->objResidencial->getsectorUrbano();
+		this->comboBox2->Text = this->objResidencial->getconstructora();
+		this->textBox1->Text = Convert::ToString(this->objResidencial->getcantBloques());
+		this->textBox2->Text = Convert::ToString(this->objResidencial->getcantDepartamentos());
+		this->textBox3->Text = Convert::ToString(this->objResidencial->getcantTanques());
+	}
+
+	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
+		String^sectorUrbano = this->comboBox1->Text;
+		String^ constructora = this->comboBox2->Text;
+		int cantBloques = Convert::ToInt32(this->textBox1->Text);
+		int cantDepartamentos = Convert::ToInt32(this->textBox2->Text);
+		int cantTanques = Convert::ToInt32(this->textBox3->Text);
+		ResidencialController^ objResidencialController = gcnew ResidencialController();
+		objResidencialController->actualizarResidencial(sectorUrbano, constructora, cantBloques, cantDepartamentos, cantTanques);
+		MessageBox::Show("La residencial ha sido actualizado con éxito");
+		this->Close();
+	}
+private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e) {
+	this->Close();
+}
+};
 }

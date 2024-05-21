@@ -9,5 +9,8 @@ namespace ProyectoSuministroController {
 	public:
 		ReciboController();
 		List<ReciboUsuario^>^ buscarReciboxFecha(String^ fechaEmisionRecibo);
+		List<ReciboUsuario^>^ buscarRecibosAll();
+		void agregarNuevoRecibo(int codigo, String^ fechaEmision, String^ fechaVencimiento, String^ tarifa, String^ periodoConsumo);
+		void escribirArchivo(List<ReciboUsuario^>^ listaRecibos);
 	};
 }

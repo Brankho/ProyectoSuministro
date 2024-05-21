@@ -1,5 +1,6 @@
 #pragma once
 #include "frmNuevaResidencial.h"
+#include "frmEditarResidencial.h"
 
 namespace ProyectoSuministroView {
 
@@ -191,6 +192,7 @@ namespace ProyectoSuministroView {
 			this->button3->TabIndex = 3;
 			this->button3->Text = L"Editar";
 			this->button3->UseVisualStyleBackColor = true;
+			this->button3->Click += gcnew System::EventHandler(this, &frmMantResidencial::button3_Click);
 			// 
 			// button4
 			// 
@@ -200,6 +202,7 @@ namespace ProyectoSuministroView {
 			this->button4->TabIndex = 4;
 			this->button4->Text = L"Eliminar";
 			this->button4->UseVisualStyleBackColor = true;
+			this->button4->Click += gcnew System::EventHandler(this, &frmMantResidencial::button4_Click);
 			// 
 			// frmMantResidencial
 			// 
@@ -254,6 +257,23 @@ private: System::Void button2_Click_1(System::Object^ sender, System::EventArgs^
 	ventanaNuevaResidencial->ShowDialog(); //Ventana como modal
 }
 private: System::Void frmMantResidencial_Load(System::Object^ sender, System::EventArgs^ e) {
+}
+private: System::Void button3_Click(System::Object^ sender, System::EventArgs^ e) {
+	int filaSeleccionada = this->dataGridView1->SelectedRows[0]->Index; /*Le pongo [0] porque deseo el índice de la única fila que he seleccionado*/
+	String^constructoraEditar = this->dataGridView1->Rows[filaSeleccionada]->Cells[0]->Value->ToString();
+	ResidencialController^ objResidencialController = gcnew ResidencialController();
+	Residencial^ objResidencial = objResidencialController->buscarResidencialxCons(constructoraEditar);
+	frmEditarResidencial^ ventanaEditarResidencial = gcnew frmEditarResidencial(objResidencial);
+	ventanaEditarResidencial->ShowDialog();
+	this->dataGridView1->Rows->Clear();
+}
+private: System::Void button4_Click(System::Object^ sender, System::EventArgs^ e) {
+	int filaSeleccionada = this->dataGridView1->SelectedRows[0]->Index; /*Le pongo [0] porque deseo el índice de la única fila que he seleccionado*/
+	String^constructoraEliminar = this->dataGridView1->Rows[filaSeleccionada]->Cells[0]->Value->ToString();
+	ResidencialController^ objResidencialController = gcnew ResidencialController();
+	objResidencialController->eliminarResidencial(constructoraEliminar);
+	MessageBox::Show("La residencial seleccionada ha sido eliminado correctamente");
+	this->dataGridView1->Rows->Clear();
 }
 };
 }
