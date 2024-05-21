@@ -1,1 +1,1 @@
-1;ConstruMAS;12345678912;Agua;7647368;construMAS@gmail.com;Excelente;Si;Verano
+1;ConstruMAS;12345678912;Buena;7647368;construMAS@gmail.com;Excelente;Si;Verano
