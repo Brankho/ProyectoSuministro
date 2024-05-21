@@ -9,6 +9,9 @@ namespace ProyectoSuministroView {
 	using namespace System::Windows::Forms;
 	using namespace System::Data;
 	using namespace System::Drawing;
+	using namespace ProyectoSuministroController;
+	using namespace ProyectoSuministroModel;
+	using namespace System::Collections::Generic;
 
 	/// <summary>
 	/// Resumen de frmMantRecibo
@@ -175,15 +178,17 @@ namespace ProyectoSuministroView {
 			this->button1->TabIndex = 2;
 			this->button1->Text = L"Buscar";
 			this->button1->UseVisualStyleBackColor = true;
+			this->button1->Click += gcnew System::EventHandler(this, &frmMantRecibo::button1_Click);
 			// 
 			// label1
 			// 
 			this->label1->AutoSize = true;
 			this->label1->Location = System::Drawing::Point(68, 64);
 			this->label1->Name = L"label1";
-			this->label1->Size = System::Drawing::Size(51, 16);
+			this->label1->Size = System::Drawing::Size(96, 16);
 			this->label1->TabIndex = 0;
-			this->label1->Text = L"Código";
+			this->label1->Text = L"Fecha Emisión";
+			this->label1->Click += gcnew System::EventHandler(this, &frmMantRecibo::label1_Click);
 			// 
 			// frmMantRecibo
 			// 
@@ -208,5 +213,26 @@ namespace ProyectoSuministroView {
 		frmNuevoRecibo^ nuevaVentanaRecibo = gcnew frmNuevoRecibo();
 		nuevaVentanaRecibo->ShowDialog();
 	}
+    private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
+	    String^ fechaEmision= this->textBox1->Text;
+	    fechaEmision;
+	    ReciboController^ objReciboController = gcnew ReciboController();
+	    List<ReciboUsuario^>^ listaRecibos = objReciboController->buscarReciboxFecha(fechaEmision);
+	    mostrarGrilla(listaRecibos);
+    }
+			private:void mostrarGrilla(List<ReciboUsuario^>^ listaRecibos) {
+				this->dataGridView1->Rows->Clear();
+				for (int i = 0; i < listaRecibos->Count; i++) {
+					ReciboUsuario^ objReciboUsuario = listaRecibos[i];
+					array<String^>^ filaGrilla = gcnew array<String^>(4);
+					filaGrilla[0] = Convert::ToString(objReciboUsuario->getcodigo()); //Devuelve enteros
+					filaGrilla[1] = objReciboUsuario->getfechaEmision();
+					filaGrilla[2] = objReciboUsuario->getfechaVencimiento();
+					filaGrilla[3] = objReciboUsuario->gettarifa();
+					this->dataGridView1->Rows->Add(filaGrilla);
+				}
+			}
+private: System::Void label1_Click(System::Object^ sender, System::EventArgs^ e) {
+}
 };
 }
