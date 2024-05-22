@@ -145,7 +145,7 @@ namespace ProyectoSuministroView {
 			// 
 			this->comboBox2->FormattingEnabled = true;
 			this->comboBox2->Items->AddRange(gcnew cli::array< System::Object^  >(3) { L"DIAMANTE", L"VIVALEGRE", L"CASAMAS" });
-			this->comboBox2->Location = System::Drawing::Point(274, 117);
+			this->comboBox2->Location = System::Drawing::Point(274, 67);
 			this->comboBox2->Name = L"comboBox2";
 			this->comboBox2->Size = System::Drawing::Size(121, 24);
 			this->comboBox2->TabIndex = 7;
@@ -154,7 +154,7 @@ namespace ProyectoSuministroView {
 			// 
 			this->comboBox1->FormattingEnabled = true;
 			this->comboBox1->Items->AddRange(gcnew cli::array< System::Object^  >(5) { L"Micaela", L"Belaunde", L"Jamaica", L"Pro", L"Metro" });
-			this->comboBox1->Location = System::Drawing::Point(274, 67);
+			this->comboBox1->Location = System::Drawing::Point(274, 122);
 			this->comboBox1->Name = L"comboBox1";
 			this->comboBox1->Size = System::Drawing::Size(121, 24);
 			this->comboBox1->TabIndex = 6;
@@ -196,7 +196,7 @@ namespace ProyectoSuministroView {
 			// label2
 			// 
 			this->label2->AutoSize = true;
-			this->label2->Location = System::Drawing::Point(53, 117);
+			this->label2->Location = System::Drawing::Point(53, 70);
 			this->label2->Name = L"label2";
 			this->label2->Size = System::Drawing::Size(85, 16);
 			this->label2->TabIndex = 1;
@@ -205,7 +205,7 @@ namespace ProyectoSuministroView {
 			// label1
 			// 
 			this->label1->AutoSize = true;
-			this->label1->Location = System::Drawing::Point(53, 67);
+			this->label1->Location = System::Drawing::Point(53, 125);
 			this->label1->Name = L"label1";
 			this->label1->Size = System::Drawing::Size(97, 16);
 			this->label1->TabIndex = 0;
@@ -219,33 +219,36 @@ namespace ProyectoSuministroView {
 			this->Controls->Add(this->groupBox1);
 			this->Name = L"frmEditarResidencial";
 			this->Text = L"Editar Residencial";
+			this->Load += gcnew System::EventHandler(this, &frmEditarResidencial::frmEditarResidencial_Load_1);
 			this->groupBox1->ResumeLayout(false);
 			this->groupBox1->PerformLayout();
 			this->ResumeLayout(false);
 
 		}
 #pragma endregion
-	private: System::Void frmEditarResidencial_Load(System::Object^ sender, System::EventArgs^ e) {
-		this->comboBox1->Text = this->objResidencial->getsectorUrbano();
-		this->comboBox2->Text = this->objResidencial->getconstructora();
-		this->textBox1->Text = Convert::ToString(this->objResidencial->getcantBloques());
-		this->textBox2->Text = Convert::ToString(this->objResidencial->getcantDepartamentos());
-		this->textBox3->Text = Convert::ToString(this->objResidencial->getcantTanques());
-	}
+
+		private: System::Void frmEditarResidencial_Load_1(System::Object^ sender, System::EventArgs^ e) {
+			this->comboBox1->Text = this->objResidencial->getsectorUrbano();
+			this->comboBox2->Text = this->objResidencial->getconstructora();
+			this->textBox1->Text = Convert::ToString(this->objResidencial->getcantBloques());
+			this->textBox2->Text = Convert::ToString(this->objResidencial->getcantDepartamentos());
+			this->textBox3->Text = Convert::ToString(this->objResidencial->getcantTanques());
+		}
 
 	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
-		String^sectorUrbano = this->comboBox1->Text;
 		String^ constructora = this->comboBox2->Text;
+		String^ sectorUrbano = this->comboBox1->Text;
 		int cantBloques = Convert::ToInt32(this->textBox1->Text);
 		int cantDepartamentos = Convert::ToInt32(this->textBox2->Text);
 		int cantTanques = Convert::ToInt32(this->textBox3->Text);
 		ResidencialController^ objResidencialController = gcnew ResidencialController();
-		objResidencialController->actualizarResidencial(sectorUrbano, constructora, cantBloques, cantDepartamentos, cantTanques);
+		objResidencialController->actualizarResidencial(constructora,sectorUrbano, cantBloques, cantDepartamentos, cantTanques);
 		MessageBox::Show("La residencial ha sido actualizado con éxito");
 		this->Close();
 	}
 private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e) {
 	this->Close();
 }
+
 };
 }

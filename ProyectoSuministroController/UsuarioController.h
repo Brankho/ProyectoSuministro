@@ -12,6 +12,9 @@ namespace ProyectoSuministroController {
 		List<InformacionUsuario^>^ buscarUsuariosAll();
 		void agregarNuevoUsuario(int codigo, int celular, String^ titular, String^ DNI, String^ direccion, String^ distrito, String^ tarifa, String^ correo);
 		void escribirArchivo(List<InformacionUsuario^>^ listaUsuarios);
+		InformacionUsuario^ buscarUsuarioXDNI(String^ DNIUsuario);
+		void actualizarUsuario(int codigo, int celular, String^ titular, String^ DNI, String^ direccion, String^ distrito, String^ tarifa, String^ correo);
+		void eliminarDNI(String^ DNI);
 	};
 }
 

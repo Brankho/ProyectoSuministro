@@ -20,8 +20,8 @@ List<Residencial^>^ ProyectoSuministroController::ResidencialController::buscarR
 
 		array<String^>^ datos = lineaResidencial->Split(separadores->ToCharArray());
 		// int codigo = Convert::ToInt32(datos[0]), de String a int
-		String^ sectorUrbano = datos[0];
-		String^ constructora = datos[1];
+		String^ constructora = datos[0];
+		String^ sectorUrbano = datos[1];
 		int cantBloques = Convert::ToInt32(datos[2]);
 		int cantDepartamentos = Convert::ToInt32(datos[3]);
 		int cantTanques = Convert::ToInt32(datos[4]);
@@ -55,8 +55,8 @@ List<Residencial^>^ ProyectoSuministroController::ResidencialController::buscarR
 
 		array<String^>^ datos = lineaResidencial->Split(separadores->ToCharArray());
 		// int codigo = Convert::ToInt32(datos[0]), de String a int
-		String^ sectorUrbano = datos[0];
-		String^ constructora = datos[1];
+		String^ constructora = datos[0];
+		String^ sectorUrbano = datos[1];
 		int cantBloques = Convert::ToInt32(datos[2]);
 		int cantDepartamentos = Convert::ToInt32(datos[3]);
 		int cantTanques = Convert::ToInt32(datos[4]);
@@ -78,7 +78,7 @@ List<Residencial^>^ ProyectoSuministroController::ResidencialController::buscarR
 	return listaResidenciales;
 }
 
-void ProyectoSuministroController::ResidencialController::agregarNuevaResidencial(String^ sectorUrbano, String^ constructora, int cantBloques, int cantDepartamentos, int cantTanques) {
+void ProyectoSuministroController::ResidencialController::agregarNuevaResidencial(String^ constructora,String^ sectorUrbano, int cantBloques, int cantDepartamentos, int cantTanques) {
 	List<Residencial^>^ listaResidenciales = buscarResidencialesAll();
 	int codigo;
 	String^ ruc;
@@ -111,7 +111,7 @@ void ProyectoSuministroController::ResidencialController::escribirArchivo(List<R
 	array<String^>^ lineasArchivo = gcnew array<String^>(listaResidenciales->Count);
 	for (int j = 0; j < listaResidenciales->Count; j++) {
 		Residencial^ objResidencial = listaResidenciales[j];
-		lineasArchivo[j] = objResidencial->getsectorUrbano() + ";" + objResidencial->getconstructora() + ";" + Convert::ToString(objResidencial->getcantBloques()) + ";" + Convert::ToString(objResidencial->getcantDepartamentos()) + ";" + Convert::ToString(objResidencial->getcantTanques());
+		lineasArchivo[j] = objResidencial->getconstructora() + ";" + objResidencial->getsectorUrbano() + ";" + Convert::ToString(objResidencial->getcantBloques()) + ";" + Convert::ToString(objResidencial->getcantDepartamentos()) + ";" + Convert::ToString(objResidencial->getcantTanques());
 	}
 	File::WriteAllLines("Residencial.txt", lineasArchivo);
 }
@@ -129,8 +129,8 @@ Residencial^ProyectoSuministroController::ResidencialController::buscarResidenci
 
 		array<String^>^ datos = lineaResidencial->Split(separadores->ToCharArray());
 		// int codigo = Convert::ToInt32(datos[0]), de String a int
-		String^ sectorUrbano = datos[0];
-		String^ constructora = datos[1];
+		String^ constructora = datos[0];
+		String^ sectorUrbano = datos[1];
 		int cantBloques = Convert::ToInt32(datos[2]);
 		int cantDepartamentos = Convert::ToInt32(datos[3]);
 		int cantTanques = Convert::ToInt32(datos[4]);
@@ -154,12 +154,11 @@ Residencial^ProyectoSuministroController::ResidencialController::buscarResidenci
 	return objResidencial;
 }
 
-void ResidencialController::actualizarResidencial(String^ sectorUrbano, String^constructora, int cantBloques, int cantDepartamentos, int cantTanques) {
+void ResidencialController::actualizarResidencial(String^ constructora, String^sectorUrbano, int cantBloques, int cantDepartamentos, int cantTanques) {
 	List<Residencial^>^ listaResidenciales = buscarResidencialesAll();
 	for (int i = 0; i < listaResidenciales->Count; i++) {
 		if (listaResidenciales[i]->getconstructora() == constructora) {
 			listaResidenciales[i]->setsectorUrbano(sectorUrbano);
-			listaResidenciales[i]->setconstructora(constructora);
 			listaResidenciales[i]->setcantBloques(cantBloques);
 			listaResidenciales[i]->setcantDepartamentos(cantDepartamentos);
 			listaResidenciales[i]->setcantTanques(cantTanques);

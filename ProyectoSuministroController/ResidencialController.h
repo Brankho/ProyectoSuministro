@@ -13,7 +13,7 @@ namespace ProyectoSuministroController {
 		void agregarNuevaResidencial(String^ sectorUrbano, String^ constructora, int cantBloques, int cantDepartamentos, int cantTanques);
 		void escribirArchivo(List<Residencial^>^ listaResidenciales);
 		Residencial^ buscarResidencialxCons(String^ constructoraRES);
-		void actualizarResidencial(String^ sectorUrbano, String^ constructora, int cantBloques, int cantDepartamentos, int cantTanques);
+		void actualizarResidencial(String^constructora, String^ sectorUrbano, int cantBloques, int cantDepartamentos, int cantTanques);
 		void eliminarResidencial(String^ constructora);
 	};
 }

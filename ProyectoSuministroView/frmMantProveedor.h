@@ -1,5 +1,6 @@
 #pragma once
 #include "frmNuevoProveedor.h"
+#include "frmEditarProveedor.h"
 
 namespace ProyectoSuministroView {
 
@@ -75,15 +76,15 @@ namespace ProyectoSuministroView {
 			this->button3 = (gcnew System::Windows::Forms::Button());
 			this->button2 = (gcnew System::Windows::Forms::Button());
 			this->dataGridView1 = (gcnew System::Windows::Forms::DataGridView());
-			this->groupBox1 = (gcnew System::Windows::Forms::GroupBox());
-			this->textBox1 = (gcnew System::Windows::Forms::TextBox());
-			this->button1 = (gcnew System::Windows::Forms::Button());
-			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->column4 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->Column1 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->Column2 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->Column3 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->Column5 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->groupBox1 = (gcnew System::Windows::Forms::GroupBox());
+			this->textBox1 = (gcnew System::Windows::Forms::TextBox());
+			this->button1 = (gcnew System::Windows::Forms::Button());
+			this->label1 = (gcnew System::Windows::Forms::Label());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->BeginInit();
 			this->groupBox1->SuspendLayout();
 			this->SuspendLayout();
@@ -96,6 +97,7 @@ namespace ProyectoSuministroView {
 			this->button4->TabIndex = 14;
 			this->button4->Text = L"Eliminar";
 			this->button4->UseVisualStyleBackColor = true;
+			this->button4->Click += gcnew System::EventHandler(this, &frmMantProveedor::button4_Click);
 			// 
 			// button3
 			// 
@@ -105,6 +107,7 @@ namespace ProyectoSuministroView {
 			this->button3->TabIndex = 13;
 			this->button3->Text = L"Editar";
 			this->button3->UseVisualStyleBackColor = true;
+			this->button3->Click += gcnew System::EventHandler(this, &frmMantProveedor::button3_Click);
 			// 
 			// button2
 			// 
@@ -129,6 +132,41 @@ namespace ProyectoSuministroView {
 			this->dataGridView1->RowTemplate->Height = 24;
 			this->dataGridView1->Size = System::Drawing::Size(1010, 264);
 			this->dataGridView1->TabIndex = 11;
+			// 
+			// column4
+			// 
+			this->column4->HeaderText = L"Código";
+			this->column4->MinimumWidth = 6;
+			this->column4->Name = L"column4";
+			this->column4->Width = 125;
+			// 
+			// Column1
+			// 
+			this->Column1->HeaderText = L"Razón Social";
+			this->Column1->MinimumWidth = 6;
+			this->Column1->Name = L"Column1";
+			this->Column1->Width = 125;
+			// 
+			// Column2
+			// 
+			this->Column2->HeaderText = L"RUC";
+			this->Column2->MinimumWidth = 6;
+			this->Column2->Name = L"Column2";
+			this->Column2->Width = 125;
+			// 
+			// Column3
+			// 
+			this->Column3->HeaderText = L"Calidad Agua";
+			this->Column3->MinimumWidth = 6;
+			this->Column3->Name = L"Column3";
+			this->Column3->Width = 125;
+			// 
+			// Column5
+			// 
+			this->Column5->HeaderText = L"Infraestructura";
+			this->Column5->MinimumWidth = 6;
+			this->Column5->Name = L"Column5";
+			this->Column5->Width = 125;
 			// 
 			// groupBox1
 			// 
@@ -168,41 +206,6 @@ namespace ProyectoSuministroView {
 			this->label1->TabIndex = 0;
 			this->label1->Text = L"RUC";
 			// 
-			// column4
-			// 
-			this->column4->HeaderText = L"Código";
-			this->column4->MinimumWidth = 6;
-			this->column4->Name = L"column4";
-			this->column4->Width = 125;
-			// 
-			// Column1
-			// 
-			this->Column1->HeaderText = L"Razón Social";
-			this->Column1->MinimumWidth = 6;
-			this->Column1->Name = L"Column1";
-			this->Column1->Width = 125;
-			// 
-			// Column2
-			// 
-			this->Column2->HeaderText = L"RUC";
-			this->Column2->MinimumWidth = 6;
-			this->Column2->Name = L"Column2";
-			this->Column2->Width = 125;
-			// 
-			// Column3
-			// 
-			this->Column3->HeaderText = L"Calidad Agua";
-			this->Column3->MinimumWidth = 6;
-			this->Column3->Name = L"Column3";
-			this->Column3->Width = 125;
-			// 
-			// Column5
-			// 
-			this->Column5->HeaderText = L"Infraestructura";
-			this->Column5->MinimumWidth = 6;
-			this->Column5->Name = L"Column5";
-			this->Column5->Width = 125;
-			// 
 			// frmMantProveedor
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
@@ -215,6 +218,7 @@ namespace ProyectoSuministroView {
 			this->Controls->Add(this->groupBox1);
 			this->Name = L"frmMantProveedor";
 			this->Text = L"frmMantProveedor";
+			this->Load += gcnew System::EventHandler(this, &frmMantProveedor::frmMantProveedor_Load);
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->EndInit();
 			this->groupBox1->ResumeLayout(false);
 			this->groupBox1->PerformLayout();
@@ -246,5 +250,24 @@ namespace ProyectoSuministroView {
 				this->dataGridView1->Rows->Add(filaGrilla);
 			}
 		}
+private: System::Void button4_Click(System::Object^ sender, System::EventArgs^ e) {
+	int filaSeleccionada = this->dataGridView1->SelectedRows[0]->Index; /*Le pongo [0] porque deseo el índice de la única fila que he seleccionado*/
+	int codigoEliminar = Convert::ToInt32(this->dataGridView1->Rows[filaSeleccionada]->Cells[0]->Value->ToString());
+	ProveedorController^ objProveedorController = gcnew ProveedorController();
+	objProveedorController->eliminarProveedor(codigoEliminar);
+	MessageBox::Show("El peluche seleccionado ha sido eliminado correctamente");
+	this->dataGridView1->Rows->Clear();
+}
+private: System::Void button3_Click(System::Object^ sender, System::EventArgs^ e) {
+	int filaSeleccionada = this->dataGridView1->SelectedRows[0]->Index; /*Le pongo [0] porque deseo el índice de la única fila que he seleccionado*/
+	int codigoEditar = Convert::ToInt32(this->dataGridView1->Rows[filaSeleccionada]->Cells[0]->Value->ToString());
+	ProveedorController^ objProveedorController = gcnew ProveedorController();
+	Proveedor^ objProveedor= objProveedorController->buscarProveedorxcodigo(codigoEditar);
+	frmEditarProveedor^ ventanaEditarProveedor = gcnew frmEditarProveedor(objProveedor);
+	ventanaEditarProveedor->ShowDialog();
+	this->dataGridView1->Rows->Clear();
+}
+private: System::Void frmMantProveedor_Load(System::Object^ sender, System::EventArgs^ e) {
+}
 };
 }

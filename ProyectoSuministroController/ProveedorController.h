@@ -12,5 +12,8 @@ namespace ProyectoSuministroController {
 		List<Proveedor^>^ buscarProveedoresAll();
 		void agregarNuevoProveedor(int codigo, String^ razonSocial, String^ ruc, String^ calidadAgua, String^ telefono, String^ correo, String^ calidadInfraestructura, String^ servicioEmergencia, String^ estacion);
 		void escribirArchivo(List<Proveedor^>^ listaProveedores);
+		void actualizarProveedor(int codigo, String^ razonSocial, String^ ruc, String^ calidadAgua, String^ telefono, String^ correo, String^ calidadInfraestructura, String^ servicioEmergencia, String^ estacion);
+		Proveedor^ buscarProveedorxcodigo(int codigoBuscado);
+		void eliminarProveedor(int codigo);
 	};
 }

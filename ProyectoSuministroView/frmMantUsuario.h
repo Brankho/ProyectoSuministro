@@ -1,5 +1,6 @@
 #pragma once
 #include "frmNuevoUsuario.h"
+#include "frmEditarUsuario.h"
 
 namespace ProyectoSuministroView {
 
@@ -78,14 +79,14 @@ namespace ProyectoSuministroView {
 			this->button3 = (gcnew System::Windows::Forms::Button());
 			this->button2 = (gcnew System::Windows::Forms::Button());
 			this->dataGridView1 = (gcnew System::Windows::Forms::DataGridView());
-			this->groupBox1 = (gcnew System::Windows::Forms::GroupBox());
-			this->textBox1 = (gcnew System::Windows::Forms::TextBox());
-			this->button1 = (gcnew System::Windows::Forms::Button());
-			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->column4 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->Column1 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->Column2 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->Column3 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->groupBox1 = (gcnew System::Windows::Forms::GroupBox());
+			this->textBox1 = (gcnew System::Windows::Forms::TextBox());
+			this->button1 = (gcnew System::Windows::Forms::Button());
+			this->label1 = (gcnew System::Windows::Forms::Label());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->BeginInit();
 			this->groupBox1->SuspendLayout();
 			this->SuspendLayout();
@@ -98,6 +99,7 @@ namespace ProyectoSuministroView {
 			this->button4->TabIndex = 9;
 			this->button4->Text = L"Eliminar";
 			this->button4->UseVisualStyleBackColor = true;
+			this->button4->Click += gcnew System::EventHandler(this, &frmMantUsuario::button4_Click);
 			// 
 			// button3
 			// 
@@ -107,6 +109,7 @@ namespace ProyectoSuministroView {
 			this->button3->TabIndex = 8;
 			this->button3->Text = L"Editar";
 			this->button3->UseVisualStyleBackColor = true;
+			this->button3->Click += gcnew System::EventHandler(this, &frmMantUsuario::button3_Click);
 			// 
 			// button2
 			// 
@@ -131,6 +134,34 @@ namespace ProyectoSuministroView {
 			this->dataGridView1->RowTemplate->Height = 24;
 			this->dataGridView1->Size = System::Drawing::Size(991, 252);
 			this->dataGridView1->TabIndex = 6;
+			// 
+			// column4
+			// 
+			this->column4->HeaderText = L"DNI";
+			this->column4->MinimumWidth = 6;
+			this->column4->Name = L"column4";
+			this->column4->Width = 125;
+			// 
+			// Column1
+			// 
+			this->Column1->HeaderText = L"Titular";
+			this->Column1->MinimumWidth = 6;
+			this->Column1->Name = L"Column1";
+			this->Column1->Width = 125;
+			// 
+			// Column2
+			// 
+			this->Column2->HeaderText = L"Celular";
+			this->Column2->MinimumWidth = 6;
+			this->Column2->Name = L"Column2";
+			this->Column2->Width = 125;
+			// 
+			// Column3
+			// 
+			this->Column3->HeaderText = L"Correo GMAIL";
+			this->Column3->MinimumWidth = 6;
+			this->Column3->Name = L"Column3";
+			this->Column3->Width = 125;
 			// 
 			// groupBox1
 			// 
@@ -169,34 +200,6 @@ namespace ProyectoSuministroView {
 			this->label1->Size = System::Drawing::Size(30, 16);
 			this->label1->TabIndex = 0;
 			this->label1->Text = L"DNI";
-			// 
-			// column4
-			// 
-			this->column4->HeaderText = L"DNI";
-			this->column4->MinimumWidth = 6;
-			this->column4->Name = L"column4";
-			this->column4->Width = 125;
-			// 
-			// Column1
-			// 
-			this->Column1->HeaderText = L"Titular";
-			this->Column1->MinimumWidth = 6;
-			this->Column1->Name = L"Column1";
-			this->Column1->Width = 125;
-			// 
-			// Column2
-			// 
-			this->Column2->HeaderText = L"Celular";
-			this->Column2->MinimumWidth = 6;
-			this->Column2->Name = L"Column2";
-			this->Column2->Width = 125;
-			// 
-			// Column3
-			// 
-			this->Column3->HeaderText = L"Correo GMAIL";
-			this->Column3->MinimumWidth = 6;
-			this->Column3->Name = L"Column3";
-			this->Column3->Width = 125;
 			// 
 			// frmMantUsuario
 			// 
@@ -241,5 +244,22 @@ namespace ProyectoSuministroView {
 			this->dataGridView1->Rows->Add(filaGrilla);
 		}
 	}
+private: System::Void button3_Click(System::Object^ sender, System::EventArgs^ e) {
+	int filaSeleccionada = this->dataGridView1->SelectedRows[0]->Index; /*Le pongo [0] porque deseo el índice de la única fila que he seleccionado*/
+	String^ DNIEditar = this->dataGridView1->Rows[filaSeleccionada]->Cells[0]->Value->ToString();
+	UsuarioController^ objUsuarioController = gcnew UsuarioController();
+	InformacionUsuario^ objUsuario = objUsuarioController->buscarUsuarioXDNI(DNIEditar);
+	frmEditarUsuario^ ventanaEditarUsuario = gcnew frmEditarUsuario(objUsuario);
+	ventanaEditarUsuario->ShowDialog();
+	this->dataGridView1->Rows->Clear();
+}
+private: System::Void button4_Click(System::Object^ sender, System::EventArgs^ e) {
+	int filaSeleccionada = this->dataGridView1->SelectedRows[0]->Index; /*Le pongo [0] porque deseo el índice de la única fila que he seleccionado*/
+	String^ DNIEliminar = this->dataGridView1->Rows[filaSeleccionada]->Cells[0]->Value->ToString();
+	UsuarioController^ objUsuarioController = gcnew UsuarioController();
+	objUsuarioController->eliminarDNI(DNIEliminar);
+	MessageBox::Show("El usuario seleccionado ha sido eliminado correctamente");
+	this->dataGridView1->Rows->Clear();
+}
 };
 }
