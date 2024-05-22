@@ -22,11 +22,10 @@ List<ReciboUsuario^>^ ProyectoSuministroController::ReciboController::buscarReci
 		String^ fechaVencimiento = datos[2];
 		String^ tarifa = datos[3];
 		String^ periodo = datos[4];
-		List<FacturacionUsuario^>^ listaFacturacionUsuario;
-		InterfazResidencial^ objInterfazResidencial;
+		FacturacionUsuario^ objFacturacionUsuario;
 
 		if (fechaEmision->Contains(fechaEmisionRecibo)) { //Para comparar datos a mostrar
-			ReciboUsuario^ objReciboUsuario = gcnew ReciboUsuario(codigo, objInterfazResidencial, fechaEmision, fechaVencimiento, periodo, tarifa, listaFacturacionUsuario);
+			ReciboUsuario^ objReciboUsuario = gcnew ReciboUsuario(codigo, fechaEmision, fechaVencimiento, periodo, tarifa, objFacturacionUsuario);
 			listaRecibos->Add(objReciboUsuario); //Parece que debe implementarse TODOS sus parametros
 		}
 	}
@@ -48,10 +47,9 @@ List<ReciboUsuario^>^ ProyectoSuministroController::ReciboController::buscarReci
 		String^ fechaVencimiento = datos[2];
 		String^ tarifa = datos[3];
 		String^ periodo = datos[4];
-		List<FacturacionUsuario^>^ listaFacturacionUsuario;
-		InterfazResidencial^ objInterfazResidencial;
+		FacturacionUsuario^ objFacturacionUsuario;
 
-	    ReciboUsuario^ objReciboUsuario = gcnew ReciboUsuario(codigo, objInterfazResidencial, fechaEmision, fechaVencimiento, periodo, tarifa, listaFacturacionUsuario);
+	    ReciboUsuario^ objReciboUsuario = gcnew ReciboUsuario(codigo, fechaEmision, fechaVencimiento, periodo, tarifa, objFacturacionUsuario);
         listaRecibos->Add(objReciboUsuario); //Parece que debe implementarse TODOS sus parametros
 	}
 	return listaRecibos;
@@ -59,9 +57,8 @@ List<ReciboUsuario^>^ ProyectoSuministroController::ReciboController::buscarReci
 
 void ProyectoSuministroController::ReciboController::agregarNuevoRecibo(int codigo, String^ fechaEmision, String^ fechaVencimiento, String^ tarifa, String^ periodoConsumo) {
 	List<ReciboUsuario^>^ listaRecibos = buscarRecibosAll();
-	InterfazResidencial^ objInterfazResidencial;
-	List<FacturacionUsuario^>^ listaFacturacionUsuario;
-	ReciboUsuario^ objReciboNuevo = gcnew ReciboUsuario(codigo, objInterfazResidencial, fechaEmision, fechaVencimiento, periodoConsumo, tarifa, listaFacturacionUsuario);
+	FacturacionUsuario^ objFacturacionUsuario;
+	ReciboUsuario^ objReciboNuevo = gcnew ReciboUsuario(codigo, fechaEmision, fechaVencimiento, periodoConsumo, tarifa, objFacturacionUsuario);
 	listaRecibos->Add(objReciboNuevo);
 	escribirArchivo(listaRecibos);
 }

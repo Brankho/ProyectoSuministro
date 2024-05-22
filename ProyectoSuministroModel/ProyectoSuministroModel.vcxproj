@@ -112,20 +112,17 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="Ahorros.h" />
+    <ClInclude Include="AlmacenamientoConsumo.h" />
     <ClInclude Include="ControladorAguaCaliente.h" />
     <ClInclude Include="Facturacion.h" />
+    <ClInclude Include="FacturacionProveedor.h" />
     <ClInclude Include="FacturacionUsuario.h" />
-    <ClInclude Include="HistorialConsumo.h" />
-    <ClInclude Include="InfoConsumo.h" />
-    <ClInclude Include="InterfazResidencial.h" />
+    <ClInclude Include="HistorialFacturas.h" />
+    <ClInclude Include="Medidor.h" />
     <ClInclude Include="MedidorConsumo.h" />
+    <ClInclude Include="MedidorTemperatura.h" />
     <ClInclude Include="Proveedor.h" />
-    <ClInclude Include="ReciboMantenimiento.h" />
-    <ClInclude Include="ReciboProveedor.h" />
     <ClInclude Include="ReciboUsuario.h" />
-    <ClInclude Include="Sensor.h" />
-    <ClInclude Include="SensorNivel.h" />
-    <ClInclude Include="SensorTemperatura.h" />
     <ClInclude Include="Tanque.h" />
     <ClInclude Include="Tipo.h" />
     <ClInclude Include="InformacionUsuario.h" />
@@ -134,23 +131,20 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Ahorros.cpp" />
+    <ClCompile Include="AlmacenamientoConsumo.cpp" />
     <ClCompile Include="ControladorAguaCaliente.cpp" />
     <ClCompile Include="Facturacion.cpp" />
+    <ClCompile Include="FacturacionProveedor.cpp" />
     <ClCompile Include="FacturacionUsuario.cpp" />
-    <ClCompile Include="HistorialConsumo.cpp" />
-    <ClCompile Include="InfoConsumo.cpp" />
+    <ClCompile Include="HistorialFacturas.cpp" />
     <ClCompile Include="InformacionUsuario.cpp" />
-    <ClCompile Include="InterfazResidencial.cpp" />
+    <ClCompile Include="Medidor.cpp" />
     <ClCompile Include="MedidorConsumo.cpp" />
+    <ClCompile Include="MedidorTemperatura.cpp" />
     <ClCompile Include="PersonaJuridica.cpp" />
     <ClCompile Include="Proveedor.cpp" />
-    <ClCompile Include="ReciboMantenimiento.cpp" />
-    <ClCompile Include="ReciboProveedor.cpp" />
     <ClCompile Include="ReciboUsuario.cpp" />
     <ClCompile Include="Residencial.cpp" />
-    <ClCompile Include="Sensor.cpp" />
-    <ClCompile Include="SensorNivel.cpp" />
-    <ClCompile Include="SensorTemperatura.cpp" />
     <ClCompile Include="Tanque.cpp" />
     <ClCompile Include="Tipo.cpp" />
   </ItemGroup>

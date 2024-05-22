@@ -2,45 +2,54 @@
 
 using namespace ProyectoSuministroModel;
 
-MedidorConsumo::MedidorConsumo() {
+MedidorConsumo::MedidorConsumo(): Medidor(){
 
 }
 
-MedidorConsumo::MedidorConsumo(int codigomedidor, String^ marcamedidor, String^ Tipomedidor, List< InfoConsumo^>^ listaInfoConsumo) {
-	this->codigomedidor = codigomedidor;
-	this->marcamedidor = marcamedidor;
-	this->Tipomedidor = Tipomedidor;
-	this->listaInfoConsumo = listaInfoConsumo;
+MedidorConsumo::MedidorConsumo(String^ ID, double longBandaMuerta, String^ alarma, String^ volumenSuministrado, double conversionVolumen, Tanque^ objTanque,String^tipoSensor, String^ Marca, String^ Rango, String^ Rangoestablecido, double precision):Medidor( ID, tipoSensor,  Marca, Rango, Rangoestablecido,precision) {
+	this->ID = ID;
+	this->longBandaMuerta = longBandaMuerta;
+	this->alarma = alarma;
+	this->volumenSuministrado = volumenSuministrado;
+	this->conversionVolumen = conversionVolumen;
+	this->objTanque = objTanque;
+
 }
 
-int MedidorConsumo::getcodigomedidor() {
-	return this->codigomedidor;
-}
 
-void MedidorConsumo::setcodigomedidor(int codigomedidor) {
-	this->codigomedidor = codigomedidor;
+String^ MedidorConsumo::getID() {
+	return this->ID;
 }
-
-String^ MedidorConsumo::getmarcamedidor() {
-	return this->marcamedidor = marcamedidor;
+void MedidorConsumo::setID(String^ ID) {
+	this->ID = ID;
 }
-
-void MedidorConsumo::setmarcamedidor(String^ marcamedidor) {
-	this->marcamedidor = marcamedidor;
+double MedidorConsumo::getLongBandaMuerta() {
+	return this->longBandaMuerta;
 }
-
-String^ MedidorConsumo::getTipomedidor() {
-	return this->Tipomedidor;
+void MedidorConsumo::setLongBandaMuerta(double longBandaMuerta) {
+	this->longBandaMuerta = longBandaMuerta;
 }
-
-void MedidorConsumo::setTipomedidor(String^ Tipomedidor) {
-	this->Tipomedidor = Tipomedidor;
+String^ MedidorConsumo::getAlarma() {
+	return this->alarma;
 }
-
-List< InfoConsumo^>^ MedidorConsumo::getlistaInfoConsumo() {
-	return this->listaInfoConsumo;
+void MedidorConsumo::setAlarma(String^ alarma) {
+	this->alarma = alarma;
 }
-
-void MedidorConsumo::setlistaInfoConsumo(List< InfoConsumo^>^ listaInfoConsumo) {
-	this->listaInfoConsumo = listaInfoConsumo;
+String^ MedidorConsumo::getVolumenSuministrado() {
+	return this->volumenSuministrado;
+}
+void MedidorConsumo::setVolumenSuministrado(String^ volumenSuministrado) {
+	this->volumenSuministrado = volumenSuministrado;
+}
+double MedidorConsumo::getConversionVolumen() {
+	return this->conversionVolumen;
+}
+void MedidorConsumo::setConversionVolumen(double conversionVolumen) {
+	this->conversionVolumen = conversionVolumen;
+}
+Tanque^ MedidorConsumo::getObjTanque() {
+	return this->objTanque;
+}
+void MedidorConsumo::setObjTanque(Tanque^ objTanque) {
+	this->objTanque = objTanque;
 }

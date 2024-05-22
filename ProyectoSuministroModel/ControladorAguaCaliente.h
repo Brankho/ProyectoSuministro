@@ -1,6 +1,7 @@
 #pragma once
 
-#include "InterfazResidencial.h"
+#include "Residencial.h"
+#include "MedidorTemperatura.h"
 using namespace System;
 
 namespace ProyectoSuministroModel {
@@ -11,11 +12,12 @@ namespace ProyectoSuministroModel {
 		String^ EstadoConexion;
 		double Temperaturadeseada;
 		double IndicadorTemperatura;
-		InterfazResidencial^ objInterfazResidencial;
+		Residencial^ objResidencial;
+		MedidorTemperatura^ objMedidorTemperatura;
 
 	public:
 		ControladorAguaCaliente();
-		ControladorAguaCaliente(String^ Conexion, String^ EstadoConexion, double Temperaturadeseada, double IndicadorTemperatura, InterfazResidencial^ objInterfazResidencial);
+		ControladorAguaCaliente(String^ Conexion, String^ EstadoConexion, double Temperaturadeseada, double IndicadorTemperatura, Residencial^ objResidencial, MedidorTemperatura^ objMedidorTemperatura);
 
 
 		String^ getConexion();
@@ -26,8 +28,11 @@ namespace ProyectoSuministroModel {
 		void setTemperaturadeseada(double Temperaturadeseada);
 		double getIndicadorTemperatura();
 		void setIndicadorTemperatura(double IndicadorTemperatura);
-		InterfazResidencial^ getobjInterfazResidencial();
-		void setobjInterfazResidencial(InterfazResidencial^ objInterfazResidencial);
+		Residencial^ getobjResidencial();
+		void setobjResidencial(Residencial^ objResidencial);
+
+		MedidorTemperatura^ getobjMedidorTemperatura();
+		void setobjMedidorTemperatura(MedidorTemperatura^ objMedidorTemperatura);
 
 	};
 }

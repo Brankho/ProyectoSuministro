@@ -6,11 +6,12 @@ Proveedor::Proveedor() :PersonaJuridica() {
 
 }
 
-Proveedor::Proveedor(int codigo, String^ calidadagua, String^ calidadinfraestructura, String^ ServicioEmergencia, String^ estacion, String^ ruc, String^ direccion, String^ telefono, String^ razonSocial, String^ ciudad, String^ distrito, String^ correo) :PersonaJuridica(codigo, ruc, direccion, telefono, razonSocial, ciudad, distrito, correo) {
+Proveedor::Proveedor(int codigo, String^ calidadagua, String^ calidadinfraestructura, String^ ServicioEmergencia, String^ estacion, Tipo^ objTipo, String^ ruc, String^ direccion, String^ telefono, String^ razonSocial, String^ ciudad, String^ distrito, String^ correo) :PersonaJuridica(codigo, ruc, direccion, telefono, razonSocial, ciudad, distrito, correo) {
 	this->calidadagua = calidadagua;
 	this->calidadinfraestructura = calidadinfraestructura;
 	this->ServicioEmergencia = ServicioEmergencia;
 	this->estacion = estacion;
+	this->objTipo = objTipo;
 }
 
 String^ Proveedor::getcalidadagua() {
@@ -36,4 +37,13 @@ String^ Proveedor::getestacion() {
 }
 void Proveedor::setestacion(String^ estacion) {
 	this->estacion = estacion;
+}
+
+Tipo^ Proveedor::getobjTipo() {
+	return this->objTipo;
+}
+
+void Proveedor::setobjTipo(Tipo^ objTipo) {
+
+	this->objTipo = objTipo;
 }

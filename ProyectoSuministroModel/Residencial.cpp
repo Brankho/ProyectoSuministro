@@ -6,7 +6,7 @@ Residencial::Residencial() {
 
 }
 
-Residencial::Residencial(int codigo, String^ ruc, String^ direccion, String^ telefono, String^ razonSocial, String^ ciudad, String^ distrito, String^ correo, String^ sectorUrbano, String^ constructora, int cantBloques, int cantDepartamentos, int codigoBloque, int codigoDepa, int cantTanques) :PersonaJuridica(codigo, ruc, direccion, telefono, razonSocial, ciudad, distrito, correo) {
+Residencial::Residencial(int codigo, String^ ruc, String^ direccion, String^ telefono, String^ razonSocial, String^ ciudad, String^ distrito, String^ correo, String^ sectorUrbano, String^ constructora, int cantBloques, int cantDepartamentos, int codigoBloque, int codigoDepa, int cantTanques, String^ estacion) {
 	this->sectorUrbano = sectorUrbano;
 	this->constructora = constructora;
 	this->cantBloques = cantBloques;
@@ -14,6 +14,7 @@ Residencial::Residencial(int codigo, String^ ruc, String^ direccion, String^ tel
 	this->cantTanques = cantTanques;
 	this->codigoBloque = codigoBloque;
 	this->codigoDepa = codigoDepa;
+	this->estacion = estacion;
 }
 
 
@@ -58,4 +59,11 @@ int Residencial::getcantTanques() {
 }
 void Residencial::setcantTanques(int cantTanques) {
 	this->cantTanques = cantTanques;
+}
+String^ Residencial::getestacion() {
+	return this->estacion;
+}
+
+void Residencial::setestacion(String^ estacion) {
+	this->estacion = estacion;
 }

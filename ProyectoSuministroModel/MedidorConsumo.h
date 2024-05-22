@@ -1,34 +1,38 @@
 #pragma once
-
-#include "InfoConsumo.h"
+#include "Medidor.h"
+#include "Tanque.h"
 
 using namespace System;
-using namespace System::Collections::Generic;
 
 namespace ProyectoSuministroModel {
-	public ref class MedidorConsumo {
+	public ref class MedidorConsumo:Medidor {
 
 	private:
-
-		int codigomedidor;
-		String^ marcamedidor;
-		String^ Tipomedidor;
-		List< InfoConsumo^>^ listaInfoConsumo;
+		String^ ID;
+		double longBandaMuerta;
+		String^ alarma;
+		String^ volumenSuministrado;
+		double conversionVolumen;
+		Tanque^ objTanque;
 
 	public:
 		MedidorConsumo();
-		MedidorConsumo(int codigomedidor, String^ marcamedidor, String^ Tipomedidor, List< InfoConsumo^>^ listaInfoConsumo);
+		MedidorConsumo(String^ ID, double longBandaMuerta, String^ alarma, String^ volumenSuministrado, double conversionVolumen, Tanque^ objTanque, String^ tipoSensor, String^ Marca, String^ Rango, String^ Rangoestablecido, double precision);
 
 
-		int getcodigomedidor();
-		void setcodigomedidor(int codigomedidor);
-		String^ getmarcamedidor();
-		void setmarcamedidor(String^ marcamedidor);
-		String^ getTipomedidor();
-		void setTipomedidor(String^ Tipomedidor);
-		List< InfoConsumo^>^ getlistaInfoConsumo();
-		void setlistaInfoConsumo(List< InfoConsumo^>^ listaInfoConsumo);
-
+		String^ getID();
+		void setID(String^ ID);
+		double getLongBandaMuerta();
+		void setLongBandaMuerta(double longBandaMuerta);
+		String^ getAlarma();
+		void setAlarma(String^ alarma);
+		String^ getVolumenSuministrado();
+		void setVolumenSuministrado(String^ volumenSuministrado);
+		double getConversionVolumen();
+		void setConversionVolumen(double conversionVolumen);
+		Tanque^ getObjTanque();
+		void setObjTanque(Tanque^ objTanque);
+		
 	};
 }
 

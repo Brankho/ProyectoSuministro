@@ -14,10 +14,11 @@ namespace ProyectoSuministroModel {
         int codigoBloque;
         int codigoDepa;
         int cantTanques;
+        String^ estacion;
 
     public:
         Residencial();
-        Residencial(int codigo, String^ ruc, String^ direccion, String^ telefono, String^ razonSocial, String^ ciudad, String^ distrito, String^ correo, String^ sectorUrbano, String^ constructora, int cantBloques, int cantDepartamentos, int codigoBloque, int codigoDepa, int cantTanques);
+        Residencial(int codigo, String^ ruc, String^ direccion, String^ telefono, String^ razonSocial, String^ ciudad, String^ distrito, String^ correo, String^ sectorUrbano, String^ constructora, int cantBloques, int cantDepartamentos, int codigoBloque, int codigoDepa, int cantTanques, String^ estacion);
 
         String^ getsectorUrbano();
         void setsectorUrbano(String^ sectorUrbano);
@@ -33,6 +34,8 @@ namespace ProyectoSuministroModel {
         void setcodigoDepa(int codigoDepa);
         int getcantTanques();
         void setcantTanques(int cantTanques);
+        String^ getestacion();
+        void setestacion(String^ estacion);
     };
 }
 

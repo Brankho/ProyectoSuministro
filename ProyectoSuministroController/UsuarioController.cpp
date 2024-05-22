@@ -22,11 +22,10 @@ List<InformacionUsuario^>^ ProyectoSuministroController::UsuarioController::busc
 		String^ distrito = datos[5];
 		String^ tarifa = datos[6];
 		String^ correo = datos[7];
-		InterfazResidencial^ objInterfazResidencial;
 		Residencial^ objResidencial;
 		String^ unidadUso;
 		if (DNI->CompareTo(DNIUsuario) == 0) {
-			InformacionUsuario^ objUsuario = gcnew ProyectoSuministroModel::InformacionUsuario(codigo, celular, titular, DNI, direccion, distrito, tarifa, unidadUso, correo, objInterfazResidencial, objResidencial);
+			InformacionUsuario^ objUsuario = gcnew ProyectoSuministroModel::InformacionUsuario(codigo, celular, titular, DNI, direccion, distrito, tarifa, unidadUso, correo, objResidencial);
 			listaUsuarios->Add(objUsuario);
 		}
 	}
@@ -48,11 +47,10 @@ List<InformacionUsuario^>^ ProyectoSuministroController::UsuarioController::busc
 		String^ distrito = datos[5];
 		String^ tarifa = datos[6];
 		String^ correo = datos[7];
-		InterfazResidencial^ objInterfazResidencial;
 		Residencial^ objResidencial;
 		String^ unidadUso;
 
-		InformacionUsuario^ objUsuario = gcnew ProyectoSuministroModel::InformacionUsuario(codigo, celular, titular, DNI, direccion, distrito, tarifa, unidadUso, correo, objInterfazResidencial, objResidencial);
+		InformacionUsuario^ objUsuario = gcnew ProyectoSuministroModel::InformacionUsuario(codigo, celular, titular, DNI, direccion, distrito, tarifa, unidadUso, correo, objResidencial);
 		listaUsuarios->Add(objUsuario);
 	}
 	return listaUsuarios;
@@ -60,10 +58,9 @@ List<InformacionUsuario^>^ ProyectoSuministroController::UsuarioController::busc
 
 void ProyectoSuministroController::UsuarioController::agregarNuevoUsuario(int codigo, int celular, String^titular, String^DNI, String^direccion, String^distrito, String^tarifa, String^correo) {
 	List<InformacionUsuario^>^ listaUsuarios = buscarUsuariosAll();
-	InterfazResidencial^ objInterfazResidencial;
 	Residencial^ objResidencial;
 	String^ unidadUso;
-	InformacionUsuario^ objUsuarioNuevo = gcnew InformacionUsuario(codigo, celular, titular, DNI, direccion, distrito, tarifa, unidadUso, correo, objInterfazResidencial, objResidencial);
+	InformacionUsuario^ objUsuarioNuevo = gcnew InformacionUsuario(codigo, celular, titular, DNI, direccion, distrito, tarifa, unidadUso, correo, objResidencial);
 	listaUsuarios->Add(objUsuarioNuevo);
 	escribirArchivo(listaUsuarios);
 }

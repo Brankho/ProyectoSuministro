@@ -154,6 +154,7 @@ namespace ProyectoSuministroView {
 			this->button1->TabIndex = 10;
 			this->button1->Text = L"Grabar";
 			this->button1->UseVisualStyleBackColor = true;
+			this->button1->Click += gcnew System::EventHandler(this, &frmEditarRecibo::button1_Click);
 			// 
 			// textBox3
 			// 
@@ -235,5 +236,7 @@ namespace ProyectoSuministroView {
 
 		}
 #pragma endregion
-	};
+	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
+	}
+};
 }

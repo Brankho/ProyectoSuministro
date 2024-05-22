@@ -6,7 +6,7 @@ InformacionUsuario::InformacionUsuario() {
 
 }
 
-InformacionUsuario::InformacionUsuario(int codigo, int celular, String^ titular, String^ DNI, String^ direccion, String^ distrito, String^ tarifa, String^ unidadUso, String^ correo, InterfazResidencial^ objInterfazResidencial, Residencial^ objResidencial) {
+InformacionUsuario::InformacionUsuario(int codigo, int celular, String^ titular, String^ DNI, String^ direccion, String^ distrito, String^ tarifa, String^ unidadUso, String^ correo, Residencial^ objResidencial) {
 	this->codigo = codigo;
 	this->celular = celular;
 	this->titular = titular;
@@ -16,7 +16,6 @@ InformacionUsuario::InformacionUsuario(int codigo, int celular, String^ titular,
 	this->tarifa = tarifa;
 	this->unidadUso = unidadUso;
 	this->correo = correo;
-	this->objInterfazResidencial = objInterfazResidencial;
 	this->objResidencial = objResidencial;
 }
 
@@ -91,14 +90,6 @@ String^ InformacionUsuario::getcorreo() {
 
 void InformacionUsuario::setcorreo(String^ correo) {
 	this->correo = correo;
-}
-
-InterfazResidencial^ InformacionUsuario::getobjInterfazResidencial() {
-	return this->objInterfazResidencial;
-}
-
-void InformacionUsuario::setobjInterfazResidencial(InterfazResidencial^ objInterfazResidencial) {
-	this->objInterfazResidencial = objInterfazResidencial;
 }
 
 Residencial^ InformacionUsuario::getobjResidencial() {

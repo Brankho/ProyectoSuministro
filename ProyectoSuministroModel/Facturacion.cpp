@@ -6,12 +6,23 @@ Facturacion::Facturacion() {
 
 }
 
-Facturacion::Facturacion(double cargoFijo, double redondeoMesAnterior, double redondeoMesActual, double montoIGV, double montoTotal) {
+Facturacion::Facturacion(int NroFacturacion,double cargoFijo, double redondeoMesAnterior, double redondeoMesActual, double montofijo, double montoIGV, double montoTotal) {
+
+	this->NroFacturacion = NroFacturacion;
 	this->cargoFijo = cargoFijo;
 	this->redondeoMesAnterior = redondeoMesAnterior;
 	this->redondeoMesActual = redondeoMesActual;
+	this->montofijo = montofijo;
 	this->montoIGV = montoIGV;
 	this->montoTotal = montoTotal;
+}
+
+int Facturacion::getNroFacturacion() {
+	return this->NroFacturacion;
+}
+
+void Facturacion::setNroFacturacion(int NroFacturacion) {
+	this->NroFacturacion = NroFacturacion;
 }
 
 double Facturacion::getcargofijo() {
@@ -34,6 +45,14 @@ double Facturacion::getredondeoMesActual() {
 
 void Facturacion::setredondeoMesActual(double redondeoMesActual) {
 	this->redondeoMesActual = redondeoMesActual;
+}
+
+double Facturacion::getmontofijo() {
+	return this->montofijo;
+}
+
+void Facturacion::setmontofijo(double montofijo) {
+	this->montofijo = montofijo;
 }
 
 double Facturacion::getmontoIGV() {

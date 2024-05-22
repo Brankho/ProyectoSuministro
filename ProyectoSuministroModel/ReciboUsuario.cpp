@@ -6,14 +6,13 @@ ReciboUsuario::ReciboUsuario() {
 
 }
 
-ReciboUsuario::ReciboUsuario(int codigo, InterfazResidencial^ objInterfazResidencial, String^ fechaEmision, String^ fechaVencimiento, String^ periodoconsumo, String^ tarifa, List<FacturacionUsuario^>^ listaFacturacionUsuario) {
+ReciboUsuario::ReciboUsuario(int codigo, String^ fechaEmision, String^ fechaVencimiento, String^ periodoconsumo, String^ tarifa, FacturacionUsuario^ objFacturacionUsuario) {
 	this->codigo=codigo;
-	this->objInterfazResidencial = objInterfazResidencial;
 	this->fechaEmision = fechaEmision;
 	this->fechaVencimiento = fechaVencimiento;
 	this->periodoconsumo = periodoconsumo;
 	this->tarifa = tarifa;
-	this->listaFacturacionUsuario = listaFacturacionUsuario;
+	this->objFacturacionUsuario = objFacturacionUsuario;
 }
 
 int ReciboUsuario::getcodigo() {
@@ -21,12 +20,6 @@ int ReciboUsuario::getcodigo() {
 }
 void ReciboUsuario::setcodigo(int codigo) {
 	this->codigo = codigo;
-}
-InterfazResidencial^ ReciboUsuario::getobjInterfazResidencial() {
-	return this->objInterfazResidencial;
-}
-void ReciboUsuario::setobjInterfazResidencial(InterfazResidencial^ objInterfazResidencial) {
-	this->objInterfazResidencial = objInterfazResidencial;
 }
 String^ ReciboUsuario::getfechaEmision() {
 	return this->fechaEmision;
@@ -52,9 +45,9 @@ String^ ReciboUsuario::gettarifa() {
 void ReciboUsuario::settarifa(String^ tarifa) {
 	this->tarifa = tarifa;
 }
-List<FacturacionUsuario^>^ ReciboUsuario::getlistaFacturacionUsuario() {
-	return this->listaFacturacionUsuario;
+FacturacionUsuario^ ReciboUsuario::getobjFacturacionUsuario() {
+	return this->objFacturacionUsuario;
 }
-void ReciboUsuario::setlistaFacturacionUsuario(List<FacturacionUsuario^>^ listaFacturacionUsuario) {
-	this->listaFacturacionUsuario = listaFacturacionUsuario;
+void ReciboUsuario::setobjFacturacionUsuario(FacturacionUsuario^ objFacturacionUsuario) {
+	this->objFacturacionUsuario = objFacturacionUsuario;
 }

@@ -1,31 +1,26 @@
 #pragma once
 
-#include "InterfazResidencial.h"
 #include "FacturacionUsuario.h"
 
 using namespace System;
-using namespace System::Collections::Generic;
 
 namespace ProyectoSuministroModel {
     public ref class ReciboUsuario {
     private:
         int codigo;
-        InterfazResidencial^ objInterfazResidencial;
         String^ fechaEmision;
         String^ fechaVencimiento;
         String^ periodoconsumo;
         String^ tarifa;
-        List<FacturacionUsuario^>^ listaFacturacionUsuario;
+        FacturacionUsuario^ objFacturacionUsuario;
 
 
     public:
         ReciboUsuario();
-        ReciboUsuario(int codigo, InterfazResidencial^ objInterfazResidencial, String^ fechaEmision, String^ fechaVencimiento, String^ periodoconsumo, String^ tarifa, List<FacturacionUsuario^>^ listaFacturacionUsuario);
+        ReciboUsuario(int codigo, String^ fechaEmision, String^ fechaVencimiento, String^ periodoconsumo, String^ tarifa, FacturacionUsuario^ objFacturacionUsuario);
 
         int getcodigo();
         void setcodigo(int codigo);
-        InterfazResidencial^ getobjInterfazResidencial();
-        void setobjInterfazResidencial(InterfazResidencial^ objInterfazResidencial);
         String^ getfechaEmision();
         void setfechaEmision(String^ fechaEmision);
         String^ getfechaVencimiento();
@@ -34,8 +29,8 @@ namespace ProyectoSuministroModel {
         void setperiodoconsumo(String^ periodoconsumo);
         String^ gettarifa();
         void settarifa(String^ tarifa);
-        List<FacturacionUsuario^>^ getlistaFacturacionUsuario();
-        void setlistaFacturacionUsuario(List<FacturacionUsuario^>^ listaFacturacionUsuario);
+        FacturacionUsuario^ getobjFacturacionUsuario();
+        void setobjFacturacionUsuario(FacturacionUsuario^ objFacturacionUsuario);
     };
 }
 

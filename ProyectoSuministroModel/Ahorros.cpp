@@ -8,12 +8,13 @@ Ahorros::Ahorros() {
 	//Constructor vacío por defecto
 }
 
-Ahorros::Ahorros(double AhorroMensual, double AhorroAnual, double volumenAhorrado, double descuentos, InterfazResidencial^ objInterfazResidencial) {
+Ahorros::Ahorros(double AhorroMensual, double AhorroAnual, double volumenAhorrado, double descuentos, InformacionUsuario^ objInformacionUsuario, Tipo^ objTipo) {
 	this->AhorroMensual = AhorroMensual;
 	this->AhorroAnual = AhorroAnual;
 	this->volumenAhorrado = volumenAhorrado;
 	this->descuentos = descuentos;
-	this->objInterfazResidencial = objInterfazResidencial;
+	this->objInformacionUsuario = objInformacionUsuario;
+	this->objTipo = objTipo;
 }
 
 double Ahorros::getAhorroMensual() {
@@ -49,10 +50,18 @@ void Ahorros::setdescuentos(double descuentos) {
 	this->descuentos = descuentos;
 }
 
-InterfazResidencial^ Ahorros::getobjInterfazResidencial() {
-	return this->objInterfazResidencial;
+InformacionUsuario^ Ahorros::getobjInformacionUsuario() {
+	return this->objInformacionUsuario;
 }
 
-void Ahorros::setobjInterfazResidencial(InterfazResidencial^ objInterfazResidencial) {
-	this->objInterfazResidencial = objInterfazResidencial;
+void Ahorros::setobjInformacionUsuario(InformacionUsuario^ objInformacionUsuario) {
+	this->objInformacionUsuario = objInformacionUsuario;
+}
+
+Tipo^ Ahorros::getobjTipo() {
+	return this->objTipo;
+}
+
+void Ahorros::setobjTipo(Tipo^ objTipo) {
+	this->objTipo = objTipo;
 }

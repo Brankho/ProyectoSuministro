@@ -6,15 +6,21 @@ Tanque::Tanque() {
 
 }
 
-Tanque::Tanque(String^ marca, double altura, double capacidadVolumen, double peso, double area, int codigoTanque, double llenadoEstacion, Residencial^ objResidencial) {
+Tanque::Tanque(String^ ID,String^ marca, double altura, double capacidadVolumen, double peso, double area, int codigoTanque, Residencial^ objResidencial) {
+	this->ID = ID;
 	this->marca = marca;
 	this->altura = altura;
 	this->capacidadVolumen = capacidadVolumen;
 	this->peso = peso;
 	this->area = area;
 	this->codigoTanque = codigoTanque;
-	this->llenadoEstacion = llenadoEstacion;
 	this->objResidencial = objResidencial;
+}
+String^ Tanque::getID() {
+	return this->ID;
+}
+void Tanque::setID(String^ ID) {
+	this->ID = ID;
 }
 
 String^ Tanque::getmarca() {
@@ -52,12 +58,6 @@ int Tanque::getcodigoTanque() {
 }
 void Tanque::setcodigoTanque(int codigoTanque) {
 	this->codigoTanque = codigoTanque;
-}
-double Tanque::getllenadoEstacion() {
-	return this->llenadoEstacion;
-}
-void Tanque::setllenadoEstacion(double llenadoEstacion) {
-	this->llenadoEstacion = llenadoEstacion;
 }
 
 Residencial^ Tanque::getobjResidencial() {

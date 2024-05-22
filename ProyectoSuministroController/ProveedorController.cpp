@@ -25,9 +25,10 @@ List<Proveedor^>^ ProyectoSuministroController::ProveedorController::buscarProve
 		String^ direccion;
 		String^ ciudad;
 		String^ distrito;
+		Tipo^ objTipo;
 
 		if (ruc->CompareTo(RUCResidencial) == 0) {
-			Proveedor^ objProveedor = gcnew Proveedor(codigo, calidadAgua, calidadInfraestructura, servicioEmergencia, estacion, ruc, direccion, telefono, razonSocial, ciudad, distrito, correo);
+			Proveedor^ objProveedor = gcnew Proveedor(codigo, calidadAgua, calidadInfraestructura, servicioEmergencia, estacion, objTipo, ruc,  direccion, telefono, razonSocial,  ciudad,  distrito, correo);
 			listaProveedores->Add(objProveedor);
 		}
 	}
@@ -53,7 +54,8 @@ List<Proveedor^>^ ProyectoSuministroController::ProveedorController::buscarProve
 		String^ direccion;
 		String^ ciudad;
 		String^ distrito;
-		Proveedor^ objProveedor = gcnew ProyectoSuministroModel::Proveedor(codigo, calidadAgua, calidadInfraestructura, servicioEmergencia, estacion, ruc, direccion, telefono, razonSocial, ciudad, distrito, correo);
+		Tipo^ objTipo;
+		Proveedor^ objProveedor = gcnew ProyectoSuministroModel::Proveedor(codigo, calidadAgua, calidadInfraestructura, servicioEmergencia, estacion, objTipo, ruc, direccion, telefono, razonSocial, ciudad, distrito, correo);
 		listaProveedores->Add(objProveedor);
 	}
 	return listaProveedores;
@@ -64,7 +66,8 @@ void ProyectoSuministroController::ProveedorController::agregarNuevoProveedor(in
 	String^ direccion;
 	String^ ciudad;
 	String^ distrito;
-	Proveedor^ objProveedor = gcnew Proveedor(codigo, calidadAgua, calidadInfraestructura, servicioEmergencia, estacion, ruc, direccion, telefono, razonSocial, ciudad, distrito, correo);
+	Tipo^ objTipo;
+	Proveedor^ objProveedor = gcnew Proveedor(codigo, calidadAgua, calidadInfraestructura, servicioEmergencia, estacion, objTipo, ruc, direccion, telefono, razonSocial, ciudad, distrito, correo);
 	listaProveedores->Add(objProveedor);
 	escribirArchivo(listaProveedores);
 }

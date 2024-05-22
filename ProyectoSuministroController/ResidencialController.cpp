@@ -35,9 +35,10 @@ List<Residencial^>^ ProyectoSuministroController::ResidencialController::buscarR
 		String^ correo;
 		int codigoBloque;
 		int codigoDepa;
+		String^estacion;
 
 		if (constructora->CompareTo(constructoraResidencial)==0) { //Para comparar datos a mostrar
-			Residencial^ objResidencial = gcnew Residencial(codigo, ruc, direccion, telefono, razonSocial, ciudad, distrito, correo, sectorUrbano, constructora, cantBloques, cantDepartamentos, codigoBloque, codigoDepa, cantTanques);
+			Residencial^ objResidencial = gcnew Residencial(codigo, ruc, direccion, telefono, razonSocial, ciudad, distrito, correo, sectorUrbano, constructora, cantBloques, cantDepartamentos, codigoBloque, codigoDepa, cantTanques, estacion);
 			listaResidenciales->Add(objResidencial); //Parece que debe implementarse TODOS sus parametros
 		}
 	}
@@ -69,8 +70,9 @@ List<Residencial^>^ ProyectoSuministroController::ResidencialController::buscarR
 		String^ correo;
 		int codigoBloque;
 		int codigoDepa;
+		String^ estacion;
 
-		Residencial^ objResidencial = gcnew Residencial(codigo, ruc, direccion, telefono, razonSocial, ciudad, distrito, correo, sectorUrbano, constructora, cantBloques, cantDepartamentos, codigoBloque, codigoDepa, cantTanques);
+		Residencial^ objResidencial = gcnew Residencial(codigo, ruc, direccion, telefono, razonSocial, ciudad, distrito, correo, sectorUrbano, constructora, cantBloques, cantDepartamentos, codigoBloque, codigoDepa, cantTanques, estacion);
 		listaResidenciales->Add(objResidencial);
 	}
 	return listaResidenciales;
@@ -88,7 +90,8 @@ void ProyectoSuministroController::ResidencialController::agregarNuevaResidencia
 	String^ correo;
 	int codigoBloque;
 	int codigoDepa;
-	Residencial^objResidencialNuevo=gcnew Residencial(codigo, ruc, direccion, telefono, razonSocial, ciudad, distrito, correo, sectorUrbano, constructora, cantBloques, cantDepartamentos, codigoBloque, codigoDepa, cantTanques);
+	String^ estacion;
+	Residencial^objResidencialNuevo=gcnew Residencial(codigo, ruc, direccion, telefono, razonSocial, ciudad, distrito, correo, sectorUrbano, constructora, cantBloques, cantDepartamentos, codigoBloque, codigoDepa, cantTanques, estacion);
 	listaResidenciales->Add(objResidencialNuevo);
 	escribirArchivo(listaResidenciales);
 }
@@ -141,9 +144,10 @@ Residencial^ProyectoSuministroController::ResidencialController::buscarResidenci
 		String^ correo;
 		int codigoBloque;
 		int codigoDepa;
+		String^ estacion;
 
 		if (constructora->CompareTo(constructoraRES) == 0) { //Para comparar datos a mostrar
-			objResidencial = gcnew Residencial(codigo, ruc, direccion, telefono, razonSocial, ciudad, distrito, correo, sectorUrbano, constructora, cantBloques, cantDepartamentos, codigoBloque, codigoDepa, cantTanques);
+			objResidencial = gcnew Residencial(codigo, ruc, direccion, telefono, razonSocial, ciudad, distrito, correo, sectorUrbano, constructora, cantBloques, cantDepartamentos, codigoBloque, codigoDepa, cantTanques, estacion);
 			break;
 		}
 	}

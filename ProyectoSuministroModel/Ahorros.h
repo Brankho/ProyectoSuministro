@@ -1,6 +1,7 @@
 #pragma once
 
-#include "InterfazResidencial.h"
+#include "InformacionUsuario.h"
+#include "Tipo.h"
 
 using namespace System;
 
@@ -12,11 +13,12 @@ namespace ProyectoSuministroModel {
 		double AhorroAnual;
 		double volumenAhorrado;
 		double descuentos;
-		InterfazResidencial^ objInterfazResidencial;
+		InformacionUsuario^ objInformacionUsuario;
+		Tipo^ objTipo;
 	public:
 
 		Ahorros();
-		Ahorros(double AhorroMensual, double AhorroAnual, double volumenAhorrado, double descuentos, InterfazResidencial^ objInterfazResidencial);
+		Ahorros(double AhorroMensual, double AhorroAnual, double volumenAhorrado, double descuentos, InformacionUsuario^ objInformacionUsuario, Tipo^ objTipo);
 
 
 		double getAhorroMensual();
@@ -27,8 +29,12 @@ namespace ProyectoSuministroModel {
 		void setvolumenAhorrado(double volumenAhorrado);
 		double getdescuentos();
 		void setdescuentos(double descuentos);
-		InterfazResidencial^ getobjInterfazResidencial();
-		void setobjInterfazResidencial(InterfazResidencial^ objInterfazResidencial);
+		InformacionUsuario^ getobjInformacionUsuario();
+		void setobjInformacionUsuario(InformacionUsuario^ objInformacionUsuario);
+		Tipo^ getobjTipo();
+		void setobjTipo(Tipo^ objTipo);
+
+		
 	};
 }
 

@@ -1,6 +1,7 @@
 #pragma once
 
 #include "PersonaJuridica.h"
+#include "Tipo.h"
 
 using namespace System;
 
@@ -12,10 +13,11 @@ namespace ProyectoSuministroModel {
         String^ calidadinfraestructura;
         String^ ServicioEmergencia;
         String^ estacion;
+        Tipo^ objTipo;
 
     public:
         Proveedor();
-        Proveedor(int codigo, String^ calidadagua, String^ calidadinfraestructura, String^ ServicioEmergencia, String^ estacion, String^ ruc, String^ direccion, String^ telefono, String^ razonSocial, String^ ciudad, String^ distrito, String^ correo);
+        Proveedor(int codigo, String^ calidadagua, String^ calidadinfraestructura, String^ ServicioEmergencia, String^ estacion, Tipo^ objTipo, String^ ruc, String^ direccion, String^ telefono, String^ razonSocial, String^ ciudad, String^ distrito, String^ correo);
 
 
         String^ getcalidadagua();
@@ -26,5 +28,7 @@ namespace ProyectoSuministroModel {
         void setServicioEmergencia(String^ ServicioEmergencia);
         String^ getestacion();
         void setestacion(String^ estacion);
+        Tipo^ getobjTipo();
+        void setobjTipo(Tipo^ objTipo);
     };
 }

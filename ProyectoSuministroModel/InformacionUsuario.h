@@ -1,6 +1,5 @@
 #pragma once
 
-#include "InterfazResidencial.h"
 #include "Residencial.h"
 
 using namespace System;
@@ -18,12 +17,11 @@ namespace ProyectoSuministroModel {
 		String^ tarifa;
 		String^ unidadUso;
 		String^ correo;
-		InterfazResidencial^ objInterfazResidencial;
 		Residencial^ objResidencial;
 
 	public:
 		InformacionUsuario();
-		InformacionUsuario(int codigo, int celular, String^ titular, String^ DNI, String^ direccion, String^ distrito, String^ tarifa, String^ unidadUso, String^ correo, InterfazResidencial^ objInterfazResidencial, Residencial^ objResidencial);
+		InformacionUsuario(int codigo, int celular, String^ titular, String^ DNI, String^ direccion, String^ distrito, String^ tarifa, String^ unidadUso, String^ correo, Residencial^ objResidencial);
 
 		int getcodigo();
 		void setcodigo(int codigo);
@@ -43,8 +41,6 @@ namespace ProyectoSuministroModel {
 		void setunidadUso(String^ unidadUso);
 		String^ getcorreo();
 		void setcorreo(String^ correo);
-		InterfazResidencial^ getobjInterfazResidencial();
-		void setobjInterfazResidencial(InterfazResidencial^ objInterfazResidencial);
 		Residencial^ getobjResidencial();
 		void setobjResidencial(Residencial^ objResidencial);
 
