@@ -71,3 +71,53 @@ void ProyectoSuministroController::ReciboController::escribirArchivo(List<Recibo
 	}
 	File::WriteAllLines("Recibo.txt", lineasArchivo);
 }
+
+ReciboUsuario^ ProyectoSuministroController::ReciboController::buscarReciboxCodigo(int codigoBuscar) {
+	ReciboUsuario^ objReciboUsuario;
+	array<String^>^ lineas = File::ReadAllLines("Recibo.txt");
+	String^ separadores = ";";
+
+	//Elemento por elemento de 1 arreglo
+	for each (String ^ lineaRecibo in lineas) {
+
+		array<String^>^ datos = lineaRecibo->Split(separadores->ToCharArray());
+		// int codigo = Convert::ToInt32(datos[0]), de String a int
+		int codigo = Convert::ToInt32(datos[0]);
+		String^ fechaEmision = datos[1];
+		String^ fechaVencimiento = datos[2];
+		String^ tarifa = datos[3];
+		String^ periodo = datos[4];
+		FacturacionUsuario^ objFacturacionUsuario;
+
+		if (codigo==codigoBuscar) { //Para comparar datos a mostrar
+			objReciboUsuario = gcnew ReciboUsuario(codigo, fechaEmision, fechaVencimiento, periodo, tarifa, objFacturacionUsuario);
+			break;
+		}
+	}
+	return objReciboUsuario;
+}
+
+void ReciboController::actualizarRecibo(int codigo, String^fechaEmision, String^fechaVencimiento, String^tarifa, String^periodoConsumo) {
+	List<ReciboUsuario^>^ listaRecibos = buscarRecibosAll();
+	for (int i = 0; i < listaRecibos->Count; i++) {
+		if (listaRecibos[i]->getcodigo() == codigo) {
+			listaRecibos[i]->setfechaEmision(fechaEmision);
+			listaRecibos[i]->setfechaVencimiento(fechaVencimiento);
+			listaRecibos[i]->settarifa(tarifa);
+			listaRecibos[i]->setperiodoconsumo(periodoConsumo);
+			break;
+		}
+	}
+	escribirArchivo(listaRecibos);
+}
+
+void ReciboController::eliminarRecibo(int codigo) {
+	List<ReciboUsuario^>^ listaUsuarios = buscarRecibosAll();
+	for (int i = 0; i < listaUsuarios->Count; i++) {
+		if (listaUsuarios[i]->getcodigo() == codigo) {
+			listaUsuarios->RemoveAt(i);
+			break;
+		}
+	}
+	escribirArchivo(listaUsuarios);
+}

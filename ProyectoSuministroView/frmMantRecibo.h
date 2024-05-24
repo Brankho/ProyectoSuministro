@@ -1,5 +1,6 @@
 #pragma once
 #include "frmNuevoRecibo.h"
+#include "frmEditarRecibo.h"
 
 namespace ProyectoSuministroView {
 
@@ -89,6 +90,7 @@ namespace ProyectoSuministroView {
 			this->button4->TabIndex = 9;
 			this->button4->Text = L"Eliminar";
 			this->button4->UseVisualStyleBackColor = true;
+			this->button4->Click += gcnew System::EventHandler(this, &frmMantRecibo::button4_Click);
 			// 
 			// button3
 			// 
@@ -98,6 +100,7 @@ namespace ProyectoSuministroView {
 			this->button3->TabIndex = 8;
 			this->button3->Text = L"Editar";
 			this->button3->UseVisualStyleBackColor = true;
+			this->button3->Click += gcnew System::EventHandler(this, &frmMantRecibo::button3_Click);
 			// 
 			// button2
 			// 
@@ -202,6 +205,7 @@ namespace ProyectoSuministroView {
 			this->Controls->Add(this->groupBox1);
 			this->Name = L"frmMantRecibo";
 			this->Text = L"Mantenimiento Recibo";
+			this->Load += gcnew System::EventHandler(this, &frmMantRecibo::frmMantRecibo_Load);
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->EndInit();
 			this->groupBox1->ResumeLayout(false);
 			this->groupBox1->PerformLayout();
@@ -233,6 +237,25 @@ namespace ProyectoSuministroView {
 				}
 			}
 private: System::Void label1_Click(System::Object^ sender, System::EventArgs^ e) {
+}
+private: System::Void button3_Click(System::Object^ sender, System::EventArgs^ e) {
+	int filaSeleccionada = this->dataGridView1->SelectedRows[0]->Index; /*Le pongo [0] porque deseo el índice de la única fila que he seleccionado*/
+	int codigoEditar = Convert::ToInt32(this->dataGridView1->Rows[filaSeleccionada]->Cells[0]->Value->ToString());
+	ReciboController^ objReciboController = gcnew ReciboController();
+	ReciboUsuario^ objReciboUsuario = objReciboController->buscarReciboxCodigo(codigoEditar);
+	frmEditarRecibo^ ventanaEditarRecibo= gcnew frmEditarRecibo(objReciboUsuario);
+	ventanaEditarRecibo->ShowDialog();
+	this->dataGridView1->Rows->Clear();
+}
+private: System::Void button4_Click(System::Object^ sender, System::EventArgs^ e) {
+	int filaSeleccionada = this->dataGridView1->SelectedRows[0]->Index; /*Le pongo [0] porque deseo el índice de la única fila que he seleccionado*/
+	int codigoEliminar = Convert::ToInt32(this->dataGridView1->Rows[filaSeleccionada]->Cells[0]->Value->ToString());
+	ReciboController^ objReciboController = gcnew ReciboController();
+	objReciboController->eliminarRecibo(codigoEliminar);
+	MessageBox::Show("El recibo seleccionado ha sido eliminado correctamente");
+	this->dataGridView1->Rows->Clear();
+}
+private: System::Void frmMantRecibo_Load(System::Object^ sender, System::EventArgs^ e) {
 }
 };
 }

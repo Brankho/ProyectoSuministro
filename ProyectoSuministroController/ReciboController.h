@@ -12,5 +12,8 @@ namespace ProyectoSuministroController {
 		List<ReciboUsuario^>^ buscarRecibosAll();
 		void agregarNuevoRecibo(int codigo, String^ fechaEmision, String^ fechaVencimiento, String^ tarifa, String^ periodoConsumo);
 		void escribirArchivo(List<ReciboUsuario^>^ listaRecibos);
+		ReciboUsuario^ buscarReciboxCodigo(int codigoBuscar);
+		void actualizarRecibo(int codigo, String^ fechaEmision, String^ fechaVencimiento, String^ tarifa, String^ periodo);
+		void eliminarRecibo(int codigo);
 	};
 }

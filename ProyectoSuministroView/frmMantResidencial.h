@@ -64,7 +64,7 @@ namespace ProyectoSuministroView {
 		/// <summary>
 		/// Variable del diseñador necesaria.
 		/// </summary>
-		System::ComponentModel::Container ^components;
+		System::ComponentModel::Container^ components;
 
 #pragma region Windows Form Designer generated code
 		/// <summary>
@@ -229,7 +229,7 @@ namespace ProyectoSuministroView {
 	private: System::Void label1_Click(System::Object^ sender, System::EventArgs^ e) {
 	}
 	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
-		String^constructoraResidencial=this->comboBox1->Text;
+		String^ constructoraResidencial = this->comboBox1->Text;
 		constructoraResidencial;
 		ResidencialController^ objResidencialController = gcnew ResidencialController();
 		List<Residencial^>^ listaResidenciales = objResidencialController->buscarResidencialxConstructora(constructoraResidencial);
@@ -247,17 +247,18 @@ namespace ProyectoSuministroView {
 			this->dataGridView1->Rows->Add(filaGrilla);
 		}
 	}
-    private: System::Void comboBox1_SelectedIndexChanged(System::Object^ sender, System::EventArgs^ e) {
-    }
-    private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e) {
+	private: System::Void comboBox1_SelectedIndexChanged(System::Object^ sender, System::EventArgs^ e) {
+	}
+	private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e) {
 
-    }
-private: System::Void button2_Click_1(System::Object^ sender, System::EventArgs^ e) {
-	frmNuevaResidencial^ ventanaNuevaResidencial = gcnew frmNuevaResidencial();
-	ventanaNuevaResidencial->ShowDialog(); //Ventana como modal
-}
-private: System::Void frmMantResidencial_Load(System::Object^ sender, System::EventArgs^ e) {
-}
+	}
+	private: System::Void button2_Click_1(System::Object^ sender, System::EventArgs^ e) {
+		frmNuevaResidencial^ ventanaNuevaResidencial = gcnew frmNuevaResidencial();
+		ventanaNuevaResidencial->ShowDialog(); //Ventana como modal
+	}
+	private: System::Void frmMantResidencial_Load(System::Object^ sender, System::EventArgs^ e) {
+	}
+	//HOLA
 private: System::Void button3_Click(System::Object^ sender, System::EventArgs^ e) {
 	int filaSeleccionada = this->dataGridView1->SelectedRows[0]->Index; /*Le pongo [0] porque deseo el índice de la única fila que he seleccionado*/
 	String^constructoraEditar = this->dataGridView1->Rows[filaSeleccionada]->Cells[0]->Value->ToString();
